@@ -1,0 +1,18 @@
+:root {
+  --green-blue: #0c66adff;
+  --honolulu-blue: #1f78b4ff;
+  --yale-blue: #023d7bff;
+  --berkeley-blue: #002b65ff;
+  --powder-blue: #97bcd5ff;
+  
+  --orange-web: #ffa500ff;
+  --berkeley-blue: #003366ff;
+  --white: #ffffffff;
+}
+
+ /* 
+Dark Blue (#003366) + Bright Orange (#FFA500) + White (#FFFFFF) Why? 
+Dark Blue represents professionalism and trust,
+Blue represents trust and reliability, 
+Orange adds a sense of energy and action. 
+*/
