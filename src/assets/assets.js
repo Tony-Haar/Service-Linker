@@ -2,6 +2,8 @@ import Logo from "./Logo.png";
 import Profile from "./profile.jpeg";
 import Founder1 from "./founder1.jpg";
 import Founder2 from "./founder2.jpg";
+import BerkeleyGear from "./berkeley-gear.svg";
+import OrangeGear from "./orange-web-gear.svg";
 
 import Step from "./step.png";
 import Warranty from "./warranty.webp";
@@ -60,6 +62,8 @@ export const assets = {
   Profile,
   Founder1,
   Founder2,
+  BerkeleyGear,
+  OrangeGear,
   Step,
   Warranty,
   Warrant1,

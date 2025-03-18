@@ -1,9 +1,9 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
+import { assets } from "../assets/assets";
 
 import ProfileImage from "../assets/profile.jpeg";
-
 
 export default function Profile(props) {
   return (
@@ -14,7 +14,7 @@ export default function Profile(props) {
           <div className="profile-card-footer-inner">
             <img
               className="professional-profile-img"
-              src={ProfileImage}
+              src={assets.Profile}
               width="40px"
               height="40px"
             />

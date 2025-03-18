@@ -84,13 +84,13 @@ function HomePage() {
             <div className="custom-div-1">
               <div className="custom-div-2">
                 <img
-                  src={HonoluluGear}
+                  src={assets.BerkeleyGear}
                   width="200px"
                   className="honolulu-gear"
                 />
               </div>
             </div>
-            <img src={YaleGear} width="300px" className="yale-gear" />
+            <img src={assets.OrangeGear} width="300px" className="yale-gear" />
           </div>
         </div>
       </header>

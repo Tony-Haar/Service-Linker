@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-import Logo from "../../assets/Logo.png";
 import "./profilesPage.css";
+import { assets } from "../../assets/assets";
 import { serviceData } from "../../assets/assets";
 import profilesData from "../../db/profilesData";
 import { serviceRelatedImageData } from "../../assets/assets";
@@ -13,6 +13,7 @@ import Button from "../../components/Button";
 import Profile from "../../components/profile";
 import RelatedImage from "../../components/relatedImage";
 import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
 
 export default function ProfilesPage() {
   const professionalProfileData = profilesData["plumbing"];
@@ -61,9 +62,10 @@ export default function ProfilesPage() {
 
   return (
     <div className="profiles-page-container">
+      <Navbar />
       <header>
-        <nav className="navbar">
-          <img src={Logo} alt="Fix-It-Logo" className="Logo" />
+        {/* <nav className="navbar">
+          <img src={} alt="Fix-It-Logo" className="Logo" />
 
           <div className="navbar-menu">
             <Link to="/service" className="navbar-link-item">
@@ -85,7 +87,7 @@ export default function ProfilesPage() {
               </Link>
             </div>
           </div>
-        </nav>
+        </nav> */}
         <div style={style} className="header-reusable-button-div">
           {reusableButtonElements}
         </div>

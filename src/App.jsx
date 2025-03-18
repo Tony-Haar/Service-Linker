@@ -11,7 +11,7 @@ import FindProfessionalPage from "./pages/findProfessionalPage/FindProfessionalP
 import ProfessionalProfilePage from "./pages/professionalProfilePage/ProfessionalProfilePage";
 import AboutUsPage from "./pages/aboutUsPage.jsx/AboutUsPage";
 import RegistrationForm from "./pages/registrationForm/RegistrationForm";
-
+import ProInformation from "./components/ProInformation";
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
             path="/registration-form"
             element={<RegistrationForm />}
           ></Route>
+          <Route path="/pro-information" element={<ProInformation />}></Route>
         </Routes>
       </BrowserRouter>
     </>
