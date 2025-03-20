@@ -211,4 +211,3 @@ const ProfessionalRegistration = () => {
 };
 
 export default ProfessionalRegistration;
-

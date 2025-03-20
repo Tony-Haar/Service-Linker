@@ -23,13 +23,11 @@ import ProfessionalRegistration from "./pages/ProfessionalRegistration/Professio
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const location = useLocation(); // Now inside BrowserRouter context
-
+  const location = useLocation();
   const hideNavbarRoutes = ["/auth/signin", "/auth/signup"];
 
   return (
     <>
-      {/* Conditionally render Navbar */}
       {!hideNavbarRoutes.includes(location.pathname) && (
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       )}
@@ -51,7 +49,14 @@ function AppContent() {
         <Route path="/pro-profile" element={<ProfessionalProfilePage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/registration-form" element={<RegistrationForm />} />
-        <Route path="/pro-information" element={<ProInformation />} />
+        {/* <Route path="/order-professional" element={<OrderProfessional />} /> */}
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/professionals" element={<Professionals />} />
+        <Route
+          path="/professional-registration"
+          element={<ProfessionalRegistration />}
+        />
+        {/* <Route path="/pro-information" element={<ProInformation />} /> */}
       </Routes>
     </>
   );

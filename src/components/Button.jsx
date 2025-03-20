@@ -116,19 +116,19 @@ export default Button;
 
 // const Button = ({type, variant, id, page, onClick, children}) => {
 
-    return(
-        <ButtonComponent 
-            className = "reusable-btn"
-            type = {type ? type : "button"}
-            $variant = {variant}
-            id = {id}
-            onClick = {onClick}
-            $page = {page}
-        >
-            {children}
-        </ButtonComponent>
-    )
-}
+//     return(
+//         <ButtonComponent 
+//             className = "reusable-btn"
+//             type = {type ? type : "button"}
+//             $variant = {variant}
+//             id = {id}
+//             onClick = {onClick}
+//             $page = {page}
+//         >
+//             {children}
+//         </ButtonComponent>
+//     )
+// }
 
 
 // export default Button;
