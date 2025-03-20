@@ -11,7 +11,10 @@ import FindProfessionalPage from "./pages/findProfessionalPage/FindProfessionalP
 import ProfessionalProfilePage from "./pages/professionalProfilePage/ProfessionalProfilePage";
 import AboutUsPage from "./pages/aboutUsPage.jsx/AboutUsPage";
 import RegistrationForm from "./pages/registrationForm/RegistrationForm";
-import ProInformation from "./components/ProInformation";
+import OrderProfessional from "./pages/OrderProfessional/OrderProfessional";
+import ServicesPage from "./pages/servicePage/ServicesPage";
+import Professionals from "./pages/Professionals/Professionals";
+import ProfessionalRegistration from "./pages/ProfessionalRegistration/ProfessionalRegistration";
 
 function App() {
   return (
@@ -42,7 +45,16 @@ function App() {
             path="/registration-form"
             element={<RegistrationForm />}
           ></Route>
-          <Route path="/pro-information" element={<ProInformation />}></Route>
+          <Route
+            path="/order-professional"
+            element={<OrderProfessional />}
+          ></Route>
+          <Route path="/services" element={<ServicesPage />}></Route>
+          <Route path="/professionals" element={<Professionals />}></Route>
+          <Route
+            path="/professional-registration"
+            element={<ProfessionalRegistration />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>

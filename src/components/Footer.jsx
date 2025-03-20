@@ -7,9 +7,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-link-item-container d-flex flex-wrap justify-content-center align-items-center py-5 px-5">
         <Link to="/home" className="text-decoration-none">
-          <a href="" className="text-decoration-none">
-            Home
-          </a>
+          Home
         </Link>
 
         <a href="" className="text-decoration-none">

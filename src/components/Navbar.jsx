@@ -33,7 +33,7 @@ export default function Navbar() {
             <ul className="navbar-nav ms-auto navbar-menu text-center d-flex gap-0">
               <li className="nav-item">
                 <Link
-                  to="find-pro"
+                  to="/services"
                   className="nav-link navbar-link-item fs-5 fs-md-6"
                 >
                   Services

@@ -4,6 +4,7 @@ import { assets } from "../../assets/assets";
 import Service from "../../components/service";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import ProInformation from "../../components/ProInformation";
 
 import { serviceData } from "../../assets/assets";
 import "./landingPage.css";
