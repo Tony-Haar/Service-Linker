@@ -20,7 +20,7 @@ export default function DomainServiceDetailPage() {
   return (
     <div className="service-detail-container">
       <header>
-        <Navbar />
+        {/* <Navbar /> */}
       </header>
 
       <main>

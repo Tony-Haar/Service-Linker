@@ -15,7 +15,7 @@ function ProfessionalProfilePage() {
   return (
     <div className="professional-profile-page-container">
       <header>
-        <Navbar />
+        {/* <Navbar /> */}
       </header>
       <main className="main-container">
         <h1>

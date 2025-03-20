@@ -62,7 +62,7 @@ export default function ProfilesPage() {
 
   return (
     <div className="profiles-page-container">
-      <Navbar />
+      {/* <Navbar /> */}
       <header>
         {/* <nav className="navbar">
           <img src={} alt="Fix-It-Logo" className="Logo" />

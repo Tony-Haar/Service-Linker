@@ -15,7 +15,7 @@ export default function HIWPage() {
   return (
     <div className="how-it-works-container">
       <header>
-        <Navbar />
+        {/* <Navbar /> */}
       </header>
 
       <main>

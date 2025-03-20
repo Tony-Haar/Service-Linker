@@ -1,5 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
+import Navbar from "./components/Navbar";
 import LandingPage from "./pages/landingPage/LandingPage";
 import AuthPage from "./pages/authPage/authPage";
 import HomePage from "./pages/homePage/HomePage";
@@ -13,39 +15,49 @@ import AboutUsPage from "./pages/aboutUsPage.jsx/AboutUsPage";
 import RegistrationForm from "./pages/registrationForm/RegistrationForm";
 import ProInformation from "./components/ProInformation";
 
-function App() {
+
+
+function AppContent() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation(); // Now inside BrowserRouter context
+
+  const hideNavbarRoutes = ["/auth/signin", "/auth/signup"];
+
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />}></Route>
-          <Route path="/auth/:page" element={<AuthPage />}></Route>
-          <Route path="/home" element={<HomePage />}></Route>
-          <Route
-            path="/professional-profiles"
-            element={<ProfilesPage />}
-          ></Route>
-          <Route path="/benefits" element={<BenefitsPage />}></Route>
-          <Route path="/how-it-works" element={<HIWPage />}></Route>
-
-          <Route
-            path="/domain/service-details"
-            element={<DomainServiceDetailPage />}
-          ></Route>
-          <Route path="/find-pro" element={<FindProfessionalPage />}></Route>
-          <Route
-            path="/pro-profile"
-            element={<ProfessionalProfilePage />}
-          ></Route>
-          <Route path="/about-us" element={<AboutUsPage />}></Route>
-          <Route
-            path="/registration-form"
-            element={<RegistrationForm />}
-          ></Route>
-          <Route path="/pro-information" element={<ProInformation />}></Route>
-        </Routes>
-      </BrowserRouter>
+      {/* Conditionally render Navbar */}
+      {!hideNavbarRoutes.includes(location.pathname) && (
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      )}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/auth/:page"
+          element={<AuthPage setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/professional-profiles" element={<ProfilesPage />} />
+        <Route path="/benefits" element={<BenefitsPage />} />
+        <Route path="/how-it-works" element={<HIWPage />} />
+        <Route
+          path="/domain/service-details"
+          element={<DomainServiceDetailPage />}
+        />
+        <Route path="/find-pro" element={<FindProfessionalPage />} />
+        <Route path="/pro-profile" element={<ProfessionalProfilePage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/registration-form" element={<RegistrationForm />} />
+        <Route path="/pro-information" element={<ProInformation />} />
+      </Routes>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
