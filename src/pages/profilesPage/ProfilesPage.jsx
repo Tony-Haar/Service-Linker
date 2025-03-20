@@ -1,17 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import "./profilesPage.css";
 import { assets } from "../../assets/assets";
 import { serviceData } from "../../assets/assets";
-import profilesData from "../../db/profilesData";
 import { serviceRelatedImageData } from "../../assets/assets";
+
+import profilesData from "../../db/profilesData";
+
 import Button from "../../components/Button";
 import Profile from "../../components/profile";
 import RelatedImage from "../../components/relatedImage";
+
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
@@ -20,7 +21,6 @@ export default function ProfilesPage() {
   const RelatedImageData = serviceRelatedImageData["plumbing"];
 
   const selectedProfileNo = professionalProfileData.length;
-
   const style = {
     display: "flex",
     alignItems: "center",
@@ -64,30 +64,6 @@ export default function ProfilesPage() {
     <div className="profiles-page-container">
       {/* <Navbar /> */}
       <header>
-        {/* <nav className="navbar">
-          <img src={} alt="Fix-It-Logo" className="Logo" />
-
-          <div className="navbar-menu">
-            <Link to="/service" className="navbar-link-item">
-              Pro Service
-            </Link>
-            <Link to="/USER_PAGE" className="navbar-link-item">
-              Choose Your Service
-            </Link>
-            <div className="navbar-menu-inner-div">
-              <Link to="/auth">
-                <button type="button" className="btn-login">
-                  Login
-                </button>
-              </Link>
-              <Link to="/create">
-                <button type="button" className="btn-join">
-                  Join
-                </button>
-              </Link>
-            </div>
-          </div>
-        </nav> */}
         <div style={style} className="header-reusable-button-div">
           {reusableButtonElements}
         </div>

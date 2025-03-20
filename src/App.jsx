@@ -13,7 +13,11 @@ import FindProfessionalPage from "./pages/findProfessionalPage/FindProfessionalP
 import ProfessionalProfilePage from "./pages/professionalProfilePage/ProfessionalProfilePage";
 import AboutUsPage from "./pages/aboutUsPage.jsx/AboutUsPage";
 import RegistrationForm from "./pages/registrationForm/RegistrationForm";
-import ProInformation from "./components/ProInformation";
+import OrderProfessional from "./pages/OrderProfessional/OrderProfessional";
+import ServicesPage from "./pages/servicePage/ServicesPage";
+import Professionals from "./pages/Professionals/Professionals";
+import ProfessionalRegistration from "./pages/ProfessionalRegistration/ProfessionalRegistration";
+
 
 
 

@@ -315,3 +315,12 @@ select {
     transform: rotate(360deg);
   }
 }
+
+
+
+.card {
+  min-height: 450px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

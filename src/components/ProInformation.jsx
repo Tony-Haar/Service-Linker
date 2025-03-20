@@ -1,6 +1,7 @@
 import React from 'react'
 import { assets } from '../assets/assets';
 
+import ProInfo from "./ProInfo";
 
 const ProInformation = (props) => {
   return (
@@ -16,11 +17,11 @@ const ProInformation = (props) => {
         </div>
         <div className="col">
           <div className="card-body">
-            <div className="d-flex justify-content-between gap-5">
+            <div className="d-flex justify-content-between">
               <h5 className="card-title">Title: Mechanic</h5>
               <p>
                 Rating:
-                <span class="star-rating text-warning text-end">
+                <span className="text-warning ">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -29,25 +30,24 @@ const ProInformation = (props) => {
                 </span>
               </p>
             </div>
-<div style={{
-
+            <div
+              style={{
                 height: "5px",
                 backgroundColor: "blue",
                 width: "100%",
-                marginBottom: "10px"
-
-}}></div>
+                marginBottom: "10px",
+              }}
+            ></div>
             <p className="card-text">Name: Chuan Haar</p>
             <p className="card-text">Phone No: 9020478900</p>
             <p className="card-text">Service Amount: 200</p>
 
-            {/* <p className="card-text">
+            <p className="card-text">
               What I Offer: I repair and maintain your vehicle with precision
             </p>
             <p className="card-text">
               Distance: 2.5 km away from your location
             </p>
-            <p className="card-text">Rating: 4.5</p> */}
             <div className="d-flex justify-content-center">
               <button
                 href="##"
@@ -61,6 +61,6 @@ const ProInformation = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default ProInformation

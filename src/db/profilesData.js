@@ -12,6 +12,8 @@ import Image10 from "../assets/plumbing/plumber3.jpg";
 import Image11 from "../assets/plumbing/plumber1.jpg";
 import Image12 from "../assets/plumbing/plumber4.jpg";
 
+
+
 const profilesData = {
   mechanics: [
     {
