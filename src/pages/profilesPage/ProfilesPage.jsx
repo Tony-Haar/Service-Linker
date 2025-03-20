@@ -62,7 +62,7 @@ export default function ProfilesPage() {
 
   return (
     <div className="profiles-page-container">
-      <Navbar />
+      {/* <Navbar /> */}
       <header>
         <div style={style} className="header-reusable-button-div">
           {reusableButtonElements}

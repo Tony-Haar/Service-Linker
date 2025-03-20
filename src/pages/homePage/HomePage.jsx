@@ -46,7 +46,7 @@ function HomePage() {
   return (
     <div className="home-page-container">
       <header>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="header-hero home-hero">
           <div>
             <h1>Welcome To Service-Linker</h1>

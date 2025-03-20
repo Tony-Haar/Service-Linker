@@ -12,7 +12,7 @@ export default function BenefitsPage() {
   return (
     <div className="benefits-page-container">
       <header>
-        <Navbar />
+        {/* <Navbar /> */}
       </header>
       <main>
         <h1>Benefits of our services</h1>

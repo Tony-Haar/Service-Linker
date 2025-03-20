@@ -74,7 +74,7 @@ export default function FindProfessionalPage() {
   return (
     <div className="find-pro-container">
       <header>
-        <Navbar />
+        {/* <Navbar /> */}
       </header>
 
       <main>

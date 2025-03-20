@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,9 +12,67 @@ import Logo from "../../assets/Logo.png";
 import "./authPage.css";
 import Footer from "../../components/Footer";
 
-function AuthPage() {
+
+
+function AuthPage({ setIsLoggedIn }) {
   let { page } = useParams();
+  const navigate = useNavigate();
+
   const [isHovered, setIsHovered] = useState(false);
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSignUp = () => {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if the username already exists
+    const userExists = users.some(user => user.username === username);
+    if (userExists) {
+      setError('Username already taken!');
+      return;
+    }
+
+    // Check if passwords match
+    if (password !== rePassword) {
+      setError('Passwords do not match!');
+      return;
+    }
+
+    // Add new user to the users array
+    const newUser = { username, password };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    setError('');
+    alert('User created successfully!');
+    navigate('/auth/signin'); // Redirect to sign-in page
+  };
+
+  const handleLogin = () => {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Find user by username
+    const user = users.find(user => user.username === username);
+    if (!user) {
+      setError('User not found!');
+      return;
+    }
+
+    // Check if password matches
+    if (user.password !== password) {
+      setError('Incorrect password!');
+      return;
+    }
+
+    setError('');
+    alert('Login successful!');
+	setIsLoggedIn(true);
+    navigate('/home'); // Redirect to home page after successful login
+  };
+
 
   const footerStyle = {
     width: "100%",
@@ -87,23 +144,45 @@ function AuthPage() {
             }
           ></div>
 
-          <form className="sign-in-form w-100">
+          <form 
+            className="sign-in-form w-100"
+            onSubmit={(e) => {
+              e.preventDefault();
+              page === "signin" ? handleLogin() : handleSignUp();
+            }}
+          >
             <label>Email</label>
             <br />
-            <input type="email" className="form-control" />
+            <input 
+              type="email" 
+              className="form-control"
+              value={username} 
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <br />
             <label>Password</label>
             <br />
-            <input type="password" className="form-control" />
+            <input 
+              type="password" 
+              className="form-control" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <br />
             {page === "signup" && (
               <>
                 <label>Re-enter Password</label>
                 <br />
-                <input type="password" className="form-control" />
+                <input 
+                  type="password" 
+                  className="form-control"
+                  value={rePassword} 
+                  onChange={(e) => setRePassword(e.target.value)}
+                />
                 <br />
               </>
             )}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             {page === "signin" ? (
               <p>
                 By creating an account you agree to our

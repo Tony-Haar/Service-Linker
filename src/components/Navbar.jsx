@@ -3,12 +3,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.png";
 
-export default function Navbar() {
+export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false); // Update login state
+    alert("Logged out successfully!");
+  };
+
   return (
     <>
       <nav className="navbar container-fluid navbar-expand-lg">
@@ -48,16 +54,28 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item navbar-menu-inner-div d-flex flex-dm-column align-items-center gap-2 p-2">
-                <Link to="/auth/signin" className="">
-                  <button type="button" className="btn btn-login btn-sm">
-                    Login
+                {isLoggedIn ? (
+                  <button
+                    type="button"
+                    className="btn btn-logout btn-sm"
+                    onClick={handleLogout}
+                  >
+                    Logout
                   </button>
-                </Link>
-                <Link to="/professional-registration" className="w-100">
-                  <button type="button" className="btn btn-join btn-sm">
-                    Become A Professional
-                  </button>
-                </Link>
+                ) : (
+                  <Link to="/auth/signin" className="">
+                    <button type="button" className="btn btn-login btn-sm">
+                      Login
+                    </button>
+                  </Link>
+                )}
+                {!isLoggedIn && (
+                  <Link to="/registration-form" className="w-100">
+                    <button type="button" className="btn btn-join btn-sm">
+                      Become A Professional
+                    </button>
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

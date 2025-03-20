@@ -16,7 +16,7 @@ function LandingPage() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <header className="mt-3 mx-0 header-hero">
         <div className="container py-4">
           <div className="row align-items-center">
