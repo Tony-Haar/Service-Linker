@@ -53,7 +53,7 @@ export default function Navbar() {
                     Login
                   </button>
                 </Link>
-                <Link to="/registration-form" className="w-100">
+                <Link to="/professional-registration" className="w-100">
                   <button type="button" className="btn btn-join btn-sm">
                     Become A Professional
                   </button>
