@@ -11,7 +11,7 @@ import Navbar from "../../components/Navbar";
 export default function DomainServiceDetailPage() {
   const location = useLocation();
   const { domain } = location.state || {}; 
-  
+
   const domainServiceDataElement = domainServiceData[`${domain}`].map((domainservice) => (
     <DomainService
       key={domainservice.id}

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { assets } from "../../assets/assets";
 
+
+
 const ProfessionalRegistration = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);

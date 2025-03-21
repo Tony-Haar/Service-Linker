@@ -770,7 +770,7 @@ export const serviceRelatedImageData = {
 
 
 export const domainServiceData = { 
-  carpentry: [ 
+  Carpentry: [ 
     { 
       id: 1,
       image: FurnitureRepair,
@@ -792,7 +792,7 @@ export const domainServiceData = {
       ],
     },
     {
-      id: 1,
+      id: 3,
       image: FloorRepair,
       service_type: "Floor Repair",
       services_list: [
@@ -892,7 +892,7 @@ export const domainServiceData = {
       ],
     }
   ],
-  electricity: [
+  Electricity: [
     {
       id: 1,
       image: ElectricalWiring,
