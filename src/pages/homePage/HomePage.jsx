@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
@@ -19,8 +19,17 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 function HomePage() {
+  const [selectedDomain, setSelectedDomain] = useState('');
+  const [selectedService, setSelectedService] = useState('');
+  const navigate = useNavigate();
+
+
   const serviceElements = serviceData.map((service) => (
-    <Service key={service.id} service={service.service} image={service.image} />
+    <Service 
+      key={service.id} 
+      service={service.service} 
+      image={service.image} 
+    />
   ));
 
   const style = {
@@ -53,16 +62,40 @@ function HomePage() {
             <p>
               Connecting you with qualified professionals for quick assistance.
             </p>
-            <form action="">
-              <select name="domains" id="domain-select">
+            <form onSubmit ={(event) => {
+              event.preventDefault();
+              navigate("/professionals", {
+                state: {
+                  domain: selectedDomain,
+                  service: selectedService
+                }
+              });
+            }}>
+              <select 
+                name="domains" 
+                id="domain-select"
+                value = {selectedDomain}
+                onChange = {e => {
+                  setSelectedDomain(e.target.value)
+                }}
+              >
                 <option value="">--Please select the repair domain--</option>
-                <option value="Masonary">Masonary</option>
-                <option value="Tiling">Tiling</option>
-                <option value="Electricity">Electricity</option>
-                <option value="Mechanics">Mechanics</option>
-                <option value="Electronics">Mechanics</option>
+                <option value="carpentry">Carpentry</option>
+                <option value="electrical">Electrical</option>
+                <option value="plumbing">Plumbing</option>
+                <option value="sanitation">Sanitation</option>
+                <option value="painting">Painting</option>
+                <option value="roofing">Roofing</option>
+                <option value="mechanical">Mechanical</option>
               </select>
-              <select name="services" id="service-select">
+              <select 
+                name="services" 
+                id="service-select"
+                value = {selectedService}
+                onChange = {e => {
+                  setSelectedService(e.target.value)
+                }}
+              >
                 <option value="">--select the service type--</option>
                 <option value="Masonary ">block and stone repair</option>
                 <option value="Masonary">concrete façade repair</option>
@@ -75,9 +108,12 @@ function HomePage() {
                 </option>
               </select>
               <br />
-              <Link to="/find-pro">
-                <input type="submit" value="FIND A PROFESSIONAL" />
-              </Link>
+              {/* <Link to="/professionals"> */}
+                <input 
+                  type="submit" 
+                  value="FIND A PROFESSIONAL"
+                />
+              {/* </Link> */}
             </form>
           </div>
           <div className="gears-container">

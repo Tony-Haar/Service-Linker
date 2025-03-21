@@ -1,87 +1,95 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import Logo from "../../assets/Logo.png";
 import Profile from "../../assets/profile.jpeg";
 import "./registrationForm.css";
+import { professionals } from '../../assets/assets'
+
 
 const RegistrationForm = () => {
-  const [page, setPage] = React.useState(1);
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [location, setLocation] = React.useState("");
-  const [domain, setDomain] = React.useState("");
-  const [about, setAbout] = React.useState("");
-  const [title, setTitle] = React.useState("");
-  const [yearsOfExperience, setYearsOfExperience] = React.useState("");
-  const [workedAt, setWorkedAt] = React.useState("");
-  const [duration, setDuration] = React.useState("");
-  const [video, setVideo] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [password2, setPassword2] = React.useState("");
-  const [error, setError] = React.useState("");
-  const [success, setSuccess] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const navigate = useNavigate();
+  const [page, setPage] = useState(1);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    location: "",
+    domain: "",
+    about: "",
+    title: "",
+    yearsOfExperience: "",
+    workedAt: "",
+    duration: "",
+    profileImage: null,
+    video: null,
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const nextPage = () => {
-    setPage(page + 1);
+  const nextPage = () => setPage(page + 1);
+  const prevPage = () => setPage(page - 1);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.files[0] });
   };
 
-  const prevPage = () => {
-    setPage(page - 1);
-  };
-
-  const handleVideoUpload = (e) => {
+  /* const handleVideoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setVideo(file);
     }
-  };
+  }; */
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setSuccess("");
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
+    if (!formData.name || !formData.email || !formData.password) {
+      setError("Please fill in all required fields.");
       setLoading(false);
       return;
     }
-
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          location,
-          domain,
-          about,
-          title,
-          yearsOfExperience,
-          workedAt,
-          duration,
-          video,
-          password,
-          password2,
-        }),
-      });
-      const data = await response.json();
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setSuccess(data.message);
-      }
-    } catch (error) {
-      setError("Something went wrong");
+    if(formData.password != formData.confirmPassword) {
+      setError("password and re-password do not match.")
+      setLoading(false);
+      return
     }
-    setLoading(false);
-  };
+    
+    try {
+      // Prepare form data without password, confirmPassword in it
+      const { password, confirmPassword, ...formDataWithoutPasswords } = formData;
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      console.log(users)
+      // Check if the username already exists
+      const userExists = users.some(user => user.username === formData.name);
+      if (userExists) {
+        setError('Username already taken!');
+        setLoading(false);
+        return;
+      }
+
+      // Add new user to the users array
+      const userType = "provider";
+      const username = formData.email;
+      const newUser = { username, password, userType};
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+
+
+      navigate("/home");
+    } catch(err) {
+      setError("An error occured. Please try again");
+      console.log(err)
+    }
+  }
 
   return (
     <>
@@ -130,36 +138,40 @@ const RegistrationForm = () => {
                       <label>Full Name</label>
                       <input
                         type="text"
+                        name="name"
                         placeholder="Enter your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={formData.name}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="input-group">
                       <label>Email</label>
                       <input
                         type="email"
+                        name = "email"
                         placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="input-group">
                       <label>Locatin</label>
                       <input
                         type="text"
+                        name = "location"
                         placeholder="Enter your location"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
+                        value={formData.location}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="input-group">
                       <label>Domain</label>
                       <input
                         type="text"
+                        name = "domain"
                         placeholder="Enter your domain"
-                        value={domain}
-                        onChange={(e) => setDomain(e.target.value)}
+                        value={formData.domain}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -170,9 +182,9 @@ const RegistrationForm = () => {
                     <div className="input-group">
                       <label>About</label>
                       <textarea
-                        name=""
-                        value={about}
-                        onChange={(e) => setAbout(e.target.value)}
+                        name="about"
+                        value={formData.about}
+                        onChange={handleChange}
                         placeholder="Enter something about yourself"
                       ></textarea>
                     </div>
@@ -180,16 +192,18 @@ const RegistrationForm = () => {
                       <label>Title</label>
                       <input
                         type="text"
+                        name = "title"
                         placeholder="Enter your title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={formData.title}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="input-group">
                       <label>Years Of Experience</label>
                       <select
-                        value={yearsOfExperience}
-                        onChange={(e) => setYearsOfExperience(e.target.value)}
+                        name = "yearsOfExperience"
+                        value={formData.yearsOfExperience}
+                        onChange={handleChange}
                         className="about-us-form-input"
                       >
                         <option value="">Select years of experience</option>
@@ -209,16 +223,18 @@ const RegistrationForm = () => {
                       <label>Worked At</label>
                       <input
                         type="text"
+                        name = "workedAt"
                         placeholder="Enter your city"
-                        value={workedAt}
-                        onChange={(e) => setWorkedAt(e.target.value)}
+                        value={formData.workedAt}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="input-group">
                       <label>Duration</label>
                       <select
-                        value={duration}
-                        onChange={(e) => setDuration(e.target.value)}
+                        name = "duration"
+                        value={formData.duration}
+                        onChange={handleChange}
                         className="about-us-form-input"
                       >
                         <option value="">Select Duration</option>
@@ -233,9 +249,10 @@ const RegistrationForm = () => {
                       <label>Title</label>
                       <input
                         type="text"
+                        name = "title"
                         placeholder="Enter your previous title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={formData.title}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -247,8 +264,9 @@ const RegistrationForm = () => {
                       <label>Upload Your Videos</label>
                       <input
                         type="file"
+                        name="video"
                         accept="video/*"
-                        onChange={(e) => handleVideoUpload(e)}
+                        onChange={handleFileChange}
                       />
                     </div>
                   </div>
@@ -256,8 +274,28 @@ const RegistrationForm = () => {
 
                 {page === 5 && (
                   <div>
-                    <div className="input-group">
+                    {/* <div className="input-group">
                       <label>Submit</label>
+                    </div> */}
+                    <div className="input-group">
+                      <label>password</label>
+                      <input
+                        type="password"
+                        name = "password"
+                        placeholder="Enter password"
+                        value={formData.password}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="input-group">
+                      <label>re-password</label>
+                      <input
+                        type="password"
+                        name = "confirmPassword"
+                        placeholder="Re-enter password"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                 )}

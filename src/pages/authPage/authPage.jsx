@@ -42,7 +42,8 @@ function AuthPage({ setIsLoggedIn }) {
     }
 
     // Add new user to the users array
-    const newUser = { username, password };
+    const userType = "needer"
+    const newUser = { username, password, userType};
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
 
@@ -69,7 +70,7 @@ function AuthPage({ setIsLoggedIn }) {
 
     setError('');
     alert('Login successful!');
-	setIsLoggedIn(true);
+	  setIsLoggedIn(true);
     navigate('/home'); // Redirect to home page after successful login
   };
 

@@ -22,6 +22,10 @@ const ProfessionalRegistration = () => {
     password: "",
   });
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const handleNext = () => setPage(page + 1);
   const handleBack = () => setPage(page - 1);
   const handleChange = (e) => {
@@ -30,6 +34,30 @@ const ProfessionalRegistration = () => {
   const handleFileChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.files[0] });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    if (!formData.name || !formData.email || !formData.password) {
+      setError("Please fill in all required fields.");
+      setLoading(false);
+      return;
+    }
+    
+    try {
+      // Prepare form data for submission
+      const formDataToSend = new FormData();
+      Object.keys(formData).forEach((key) => {
+        formDataToSend.append(key, formData[key]);
+      });
+      console.log(formDataToSend);
+    } catch(err) {
+      setError("An error occured. Please try again");
+    }
+  }
 
   return (
     <Container className="d-flex flex-column align-items-center justify-content-center min-vh-100 bg-light">
@@ -54,7 +82,7 @@ const ProfessionalRegistration = () => {
             : "Create Password"}
         </h4>
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
           {page === 1 && (
             <>
               <Form.Group className="mb-3 text-start">
@@ -192,7 +220,7 @@ const ProfessionalRegistration = () => {
           )}
         </Form>
 
-        <div className="mt-4 d-flex justify-content-between">
+        {/* <div className="mt-4 d-flex justify-content-between">
           {page > 1 && (
             <Button variant="secondary" onClick={handleBack}>
               Back
@@ -203,12 +231,11 @@ const ProfessionalRegistration = () => {
               Next
             </Button>
           )}
-          {page === 5 && <Button variant="success">Submit</Button>}
-        </div>
+          {page === 5 && <Button type = "submit" variant="success">Submit</Button>}
+        </div> */}
       </Card>
     </Container>
   );
 };
 
 export default ProfessionalRegistration;
-

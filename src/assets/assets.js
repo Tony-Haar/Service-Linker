@@ -16,6 +16,34 @@ import Illustration from "./illustration.png";
 import Illustration1 from "./illustration1.png";
 import Illustration2 from "./illustration2.png";
 
+// carpentry
+import FurnitureRepair from "./carpentry/furniture-repair.jpeg";
+import DoorWindowRepair from "./carpentry/door-and-window-repair.jpeg";
+import FloorRepair from "./carpentry/floor-repair.jpeg";
+import CabinetRepair from "./carpentry/cabinet-repair.jpeg";
+import DeckRepair from "./carpentry/Deck-and-Patio-Repair.jpeg";
+import ShelvingStorageRepair from "./carpentry/Shelving-and-Storage-Repair.jpeg";
+import StaircaseRepair from "./carpentry/Staircase-Repair.jpeg";
+import StructuralRepair from "./carpentry/Structural-Repairs.jpeg";
+import WoodenFenceRepair from "./carpentry/Wooden-Fence-Repair.jpeg";
+import CustomRepair from "./carpentry/Custom-Carpentry-Repairs.jpeg";
+import ExteriorRepair from "./carpentry/Siding-and-Exterior-Wood-Repair.jpeg";
+// electricity
+import ElectricalWiring from "./electricity/Electrical-wiring.jpg";
+import HouseEnergyAudit from "./electricity/house-energy-audit.jpg";
+import SolarPanel from "./electricity/solar-panel-installation.jpg";
+// mechanics
+import BrakeServices from "./mechanics/brake-services.jpeg";
+import EngineDiagnostics from "./mechanics/Engine-Diagnostics.jpeg";
+import SteeringRepair from "./mechanics/steeringRepair.jpeg";
+import TransmissionServices from "./mechanics/Transmission-services.jpeg";
+// plumbing
+import DrainCleaningUnclogging from "./plumbing/Drain-cleaning-unclogging.jpg";
+import LeakRepair from "./plumbing/leak-repair.jpeg";
+import PipeRepair from "./plumbing/Pipe-repair.jpeg";
+import ToiletInstallation from "./plumbing/toilet-installation.jpeg";
+import WaterHeaterInstallation from "./plumbing/water-heater-installation.jpeg";
+
 import Image1 from "./mechanic.png";
 import Image2 from "./plumbing.png";
 import Image3 from "./painting.png";
@@ -587,27 +615,27 @@ export const services = [
 export const serviceData = [
   {
     id: 1,
-    service: "mechanics",
+    service: "Mechanics",
     image: Image1,
   },
   {
     id: 2,
-    service: "plumbing",
+    service: "Plumbing",
     image: Image2,
   },
   {
     id: 3,
-    service: "painting",
+    service: "Painting",
     image: Image3,
   },
   {
     id: 4,
-    service: "carpentry",
+    service: "Carpentry",
     image: Image4,
   },
   {
     id: 5,
-    service: "electricity",
+    service: "Electricity",
     image: Image5,
   },
 
@@ -618,7 +646,7 @@ export const serviceData = [
   },
   {
     id: 7,
-    service: "sanitation",
+    service: "Sanitation",
     image: Image10,
   },
   
@@ -741,125 +769,253 @@ export const serviceRelatedImageData = {
 };
 
 
-export const domainServiceData = [
-  {
-    id: 1,
-    image: Image1,
-    service_type: "Furniture Repair",
-    services_list: [
-      "Fixing broken chairs, tables, and cabinets.",
-      "Refinishing and restoring antique furniture.",
-      "Replacing damaged parts like legs, arms, or drawers.",
-    ],
-  },
-  {
-    id: 2,
-    image: Image2,
-    service_type: "Door and Window Repair",
-    services_list: [
-      "Repairing or replacing door frames and window sills.",
-      "Fixing sticking or squeaky doors and windows.",
-      "Installing new locks, hinges, and handles.",
-    ],
-  },
-  {
-    id: 3,
-    image: Image3,
-    service_type: "Floor Repair",
-    services_list: [
-      "Repairing or replacing damaged floorboards.",
-      "Refinishing and sanding hardwood floors.",
-      "Fixing creaky or uneven floors.",
-    ],
-  },
-  {
-    id: 4,
-    image: Image4,
-    service_type: "Cabinet Repair",
-    services_list: [
-      "Repairing kitchen and bathroom cabinets.",
-      "Replacing broken cabinet doors, hinges, and handles.",
-      "Refacing or refinishing cabinets.",
-    ],
-  },
-  {
-    id: 5,
-    image: Image5,
-    service_type: "Deck and Patio Repair",
-    services_list: [
-      "Fixing broken or loose deck boards.",
-      "Repairing or replacing railings and stairs.",
-      "Staining and sealing wooden decks.",
-    ],
-  },
-  {
-    id: 6,
-    image: Image6,
-    service_type: "Trim and Molding Repair",
-    services_list: [
-      "Repairing or replacing damaged crown molding, baseboards, and wainscoting.",
-      "Installing new trim around windows and doors.",
-      "Refinishing or repainting trim and molding.",
-    ],
-  },
-  {
-    id: 7,
-    image: Image7,
-    service_type: "Shelving and Storage Repair",
-    services_list: [
-      "Fixing or installing built-in shelves and bookcases.",
-      "Repairing closet systems and organizers.",
-      "Customizing and repairing storage solutions.",
-    ],
-  },
-  {
-    id: 8,
-    image: Image8,
-    service_type: "Structural Repairs",
-    services_list: [
-      "Reinforcing or replacing wooden beams and joists.",
-      "Fixing sagging or damaged roofs and ceilings.",
-      "Addressing issues with wooden supports and framework.",
-    ],
-  },
-  {
-    id: 9,
-    image: Image9,
-    service_type: "Staircase Repair",
-    services_list: [
-      "Repairing or replacing damaged steps, risers, and treads.",
-      "Fixing loose or creaky stairs.",
-      "Refinishing and staining staircases.",
-    ],
-  },
-  {
-    id: 10,
-    image: Image10,
-    service_type: "Wooden Fence Repair",
-    services_list: [
-      "Repairing or replacing damaged fence panels and posts.",
-      "Fixing gates and latches.",
-      "Staining or painting wooden fences.",
-    ],
-  },
-  {
-    id: 11,
-    image: Image1,
-    service_type: "Siding and Exterior Wood Repair",
-    services_list: [
-      "Repairing or replacing wooden siding.",
-      "Fixing exterior trim and fascia boards.",
-      "Addressing issues with wooden shutters and decorative elements.",
-    ],
-  },
-  {
-    id: 12,
-    image: Image2,
-    service_type: "Custom Carpentry Repairs",
-    services_list: [
-      "Creating custom solutions for unique repair needs.",
-      "Building and repairing custom furniture pieces.",
-      "Designing and fixing bespoke wooden structures and installations.",
-    ],
-  },
-];
+export const domainServiceData = { 
+  Carpentry: [ 
+    { 
+      id: 1,
+      image: FurnitureRepair,
+      service_type: "Furniture Repair",
+      services_list: [
+        "Fixing broken chairs, tables, and cabinets.",
+        "Refinishing and restoring antique furniture.",
+        "Replacing damaged parts like legs, arms, or drawers.",
+      ],
+    },
+    {
+      id: 2,
+      image: DoorWindowRepair,
+      service_type: "Door and Window Repair",
+      services_list: [
+        "Repairing or replacing door frames and window sills.",
+        "Fixing sticking or squeaky doors and windows.",
+        "Installing new locks, hinges, and handles.",
+      ],
+    },
+    {
+      id: 1,
+      image: FloorRepair,
+      service_type: "Floor Repair",
+      services_list: [
+        "Repairing or replacing damaged floorboards.",
+        "Refinishing and sanding hardwood floors.",
+        "Fixing creaky or uneven floors.",
+      ],
+    },
+    {
+      id: 4,
+      image: CabinetRepair,
+      service_type: "Cabinet Repair",
+      services_list: [
+        "Repairing kitchen and bathroom cabinets.",
+        "Replacing broken cabinet doors, hinges, and handles.",
+        "Refacing or refinishing cabinets.",
+      ],
+    },
+    {
+      id: 5,
+      image: DeckRepair,
+      service_type: "Deck and Patio Repair",
+      services_list: [
+        "Fixing broken or loose deck boards.",
+        "Repairing or replacing railings and stairs.",
+        "Staining and sealing wooden decks.",
+      ],
+    },
+    {
+      id: 6,
+      image: Image6,
+      service_type: "Trim and Molding Repair",
+      services_list: [
+        "Repairing or replacing damaged crown molding, baseboards, and wainscoting.",
+        "Installing new trim around windows and doors.",
+        "Refinishing or repainting trim and molding.",
+      ],
+    },
+    {
+      id: 7,
+      image: ShelvingStorageRepair,
+      service_type: "Shelving and Storage Repair",
+      services_list: [
+        "Fixing or installing built-in shelves and bookcases.",
+        "Repairing closet systems and organizers.",
+        "Customizing and repairing storage solutions.",
+      ],
+    },
+    {
+      id: 8,
+      image: StructuralRepair,
+      service_type: "Structural Repairs",
+      services_list: [
+        "Reinforcing or replacing wooden beams and joists.",
+        "Fixing sagging or damaged roofs and ceilings.",
+        "Addressing issues with wooden supports and framework.",
+      ],
+    },
+    {
+      id: 9,
+      image: StaircaseRepair,
+      service_type: "Staircase Repair",
+      services_list: [
+        "Repairing or replacing damaged steps, risers, and treads.",
+        "Fixing loose or creaky stairs.",
+        "Refinishing and staining staircases.",
+      ],
+    },
+    {
+      id: 10,
+      image: WoodenFenceRepair,
+      service_type: "Wooden Fence Repair",
+      services_list: [
+        "Repairing or replacing damaged fence panels and posts.",
+        "Fixing gates and latches.",
+        "Staining or painting wooden fences.",
+      ],
+    },
+    {
+      id: 11,
+      image: ExteriorRepair,
+      service_type: "Siding and Exterior Wood Repair",
+      services_list: [
+        "Repairing or replacing wooden siding.",
+        "Fixing exterior trim and fascia boards.",
+        "Addressing issues with wooden shutters and decorative elements.",
+      ],
+    },
+    {
+      id: 12,
+      image: CustomRepair,
+      service_type: "Custom Carpentry Repairs",
+      services_list: [
+        "Creating custom solutions for unique repair needs.",
+        "Building and repairing custom furniture pieces.",
+        "Designing and fixing bespoke wooden structures and installations.",
+      ],
+    }
+  ],
+  Electricity: [
+    {
+      id: 1,
+      image: ElectricalWiring,
+      service_type: "Electrical Wiring & Installations",
+      services_list: [
+        "Installing electrical wiring for new constructions and renovations.",
+        "Upgrading existing electrical systems to meet modern standards.",
+        "Setting up lighting systems, outlets, and switches in residential and commercial spaces."
+      ]
+    },     
+    {
+      id: 2,
+      image: HouseEnergyAudit,
+      service_type: "Home Energy Efficiency & Audits",
+      services_list: [
+        "Conducting energy audits to identify areas for electrical energy savings.",
+        "Recommending and installing energy-efficient lighting and appliances.",
+        "Optimizing electrical systems for reduced energy consumption."
+      ]
+    },     
+    {
+      id: 3,
+      image: SolarPanel,
+      service_type: "Solar Panel Installation & Maintenance",
+      services_list: [
+        "Designing and installing solar energy systems for homes and businesses.",
+        "Providing ongoing maintenance and monitoring of solar power setups.",
+        "Offering advice on solar energy savings and system optimization."
+      ]
+    }    
+  ],
+  Mechanics: [
+    {
+      id: 1,
+      image: EngineDiagnostics,
+      service_type: "Engine Diagnostics & Repair",
+      services_list: [
+        "Performing engine diagnostics to identify issues.",
+        "Repairing or replacing engine components like pistons, valves, and timing belts.",
+        "Offering tune-up services to optimize engine performance."
+      ]
+    },  
+    {
+      id: 2,
+      image: TransmissionServices,
+      service_type: "Transmission Services",
+      services_list: [
+        "Inspecting and diagnosing transmission issues.",
+        "Repairing or replacing faulty transmission systems.",
+        "Offering fluid flushes and maintenance for smoother gear transitions."
+      ]
+    },
+    {
+      id: 3,
+      image: BrakeServices,
+      service_type: "Brake Services & Repair",
+      services_list: [
+        "Inspecting and repairing brake pads, discs, and calipers.",
+        "Providing brake fluid replacements and system flushing.",
+        "Offering full brake system diagnostics to ensure safe vehicle operation."
+      ]
+    },
+    {
+      id: 4,
+      image: SteeringRepair,
+      service_type: "Suspension & Steering Repair",
+      services_list: [
+        "Diagnosing suspension and steering system issues.",
+        "Replacing worn-out shocks, struts, and steering components.",
+        "Providing alignment and balancing services to improve driving stability."
+      ]
+    }               
+  ],
+  Plumbing: [
+    {
+      id: 1,
+      image: DrainCleaningUnclogging,
+      service_type: "Drain Cleaning & Unclogging",
+      services_list: [
+        "Clearing blocked drains and sewer lines using advanced equipment.",
+        "Providing hydro-jetting services for stubborn clogs.",
+        "Fixing slow-draining sinks, bathtubs, and toilets."
+      ]
+    },
+    {
+      id: 2,
+      image: PipeRepair,
+      service_type: "Pipe Repair & Replacement",
+      services_list: [
+        "Repairing or replacing damaged or burst pipes.",
+        "Offering repiping services for old or corroded plumbing systems.",
+        "Providing pipe insulation to prevent freezing in colder months."
+      ]
+    },
+    {
+      id: 3,
+      image: WaterHeaterInstallation,
+      service_type: "Water Heater Installation & Repair",
+      services_list: [
+        "Installing traditional or tankless water heaters.",
+        "Repairing faulty water heaters and addressing temperature issues.",
+        "Providing regular maintenance and flushing to extend water heater lifespan."
+      ]
+    },
+    {
+      id: 4,
+      image: ToiletInstallation,
+      service_type: "Toilet Installation & Repair",
+      services_list: [
+        "Installing new toilets and replacing outdated models.",
+        "Repairing leaking, running, or clogged toilets.",
+        "Fixing issues with toilet flushing systems and water flow."
+      ]
+    },
+    {
+      id: 5,
+      image: LeakRepair,
+      service_type: "Leak Detection & Repair",
+      services_list: [
+        "Detecting leaks in walls, ceilings, and floors.",
+        "Repairing leaks in both visible and hidden plumbing systems.",
+        "Providing water pressure tests and inspections to avoid future issues."
+      ]
+    }            
+  ]
+};

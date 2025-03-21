@@ -8,7 +8,7 @@ const ServicesPage = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Container className="mt-5 w-75">
         <h2 className="text-center mb-4">Our Repair Services</h2>
