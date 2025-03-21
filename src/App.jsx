@@ -24,7 +24,11 @@ import ProfessionalRegistration from "./pages/ProfessionalRegistration/Professio
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const hideNavbarRoutes = ["/auth/signin", "/auth/signup"];
+  const hideNavbarRoutes = [
+    "/auth/signin",
+    "/auth/signup",
+    "/professional-registration",
+  ];
 
   return (
     <>

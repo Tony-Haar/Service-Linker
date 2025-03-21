@@ -9,7 +9,7 @@ const Professionals = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Container className="mt-5 mb-5">
         <h2 className="text-center mb-4">Find a Professional</h2>
 
