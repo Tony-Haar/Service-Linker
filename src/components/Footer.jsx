@@ -28,10 +28,10 @@ const Footer = () => {
         &copy; <span>FIXit</span>, ALL RIGHTS RESERVED
       </h3>
 
-      <hr
+      {/* <hr
         className="bg-warning border-0"
         style={{ height: "10px", width: "100%" }}
-      />
+      /> */}
     </footer>
   );
 };

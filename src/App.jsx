@@ -29,7 +29,6 @@ function AppContent() {
 
   return (
     <>
-      {/* Conditionally render Navbar */}
       {!hideNavbarRoutes.includes(location.pathname) && (
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       )}
