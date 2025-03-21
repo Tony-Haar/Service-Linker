@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { professionals } from "../../assets/assets";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
+
+
 const Professionals = () => {
-  const [selectedService, setSelectedService] = useState("carpentry");
+  const location = useLocation();
+  const { domain, service } = location.state || {}; 
+  
+  const [selectedService, setSelectedService] = useState(domain || "carpentry");
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Container className="mt-5 mb-5">
         <h2 className="text-center mb-4">Find a Professional</h2>
 

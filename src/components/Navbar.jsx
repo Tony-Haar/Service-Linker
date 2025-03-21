@@ -69,13 +69,11 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
                     </button>
                   </Link>
                 )}
-                {!isLoggedIn && (
-                  <Link to="/registration-form" className="w-100">
-                    <button type="button" className="btn btn-join btn-sm">
-                      Become A Professional
-                    </button>
-                  </Link>
-                )}
+                <Link to="/registration-form" className="w-100">
+                  <button type="button" className="btn btn-join btn-sm">
+                    Become A Professional
+                  </button>
+                </Link>
               </li>
             </ul>
           </div>

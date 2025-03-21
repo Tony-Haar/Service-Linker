@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -17,7 +17,7 @@ import OrderProfessional from "./pages/OrderProfessional/OrderProfessional";
 import ServicesPage from "./pages/servicePage/ServicesPage";
 import Professionals from "./pages/Professionals/Professionals";
 import ProfessionalRegistration from "./pages/ProfessionalRegistration/ProfessionalRegistration";
-
+import ProInformation from "./components/ProInformation";
 
 
 
@@ -25,7 +25,7 @@ function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation(); // Now inside BrowserRouter context
 
-  const hideNavbarRoutes = ["/auth/signin", "/auth/signup"];
+  const hideNavbarRoutes = ["/auth/signin", "/auth/signup", "/registration-form"];
 
   return (
     <>
@@ -50,8 +50,11 @@ function AppContent() {
         <Route path="/find-pro" element={<FindProfessionalPage />} />
         <Route path="/pro-profile" element={<ProfessionalProfilePage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/registration-form" element={<RegistrationForm />} />
+        <Route path="/registration-form" element={<RegistrationForm/>} />
         <Route path="/pro-information" element={<ProInformation />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/professionals" element={<Professionals/>} />
+        <Route path="/call" element={<OrderProfessional/>} />
       </Routes>
     </>
   );
