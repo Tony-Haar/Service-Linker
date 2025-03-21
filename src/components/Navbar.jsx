@@ -57,14 +57,14 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
                 {isLoggedIn ? (
                   <button
                     type="button"
-                    className="btn btn-logout btn-sm"
+                    className="btn btn-logout fs-5 btn-sm btn-logout"
                     onClick={handleLogout}
                   >
                     Logout
                   </button>
                 ) : (
                   <Link to="/auth/signin" className="">
-                    <button type="button" className="btn btn-login btn-sm">
+                    <button type="button" className="btn btn-login fs-5 btn-sm">
                       Login
                     </button>
                   </Link>
