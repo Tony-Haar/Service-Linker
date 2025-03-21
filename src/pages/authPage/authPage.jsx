@@ -69,7 +69,7 @@ function AuthPage({ setIsLoggedIn }) {
 
     setError('');
     alert('Login successful!');
-	setIsLoggedIn(true);
+	  setIsLoggedIn(true);
     navigate('/home'); // Redirect to home page after successful login
   };
 

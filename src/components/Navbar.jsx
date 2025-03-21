@@ -69,9 +69,8 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
                     </button>
                   </Link>
                 )}
-
-                <Link to="/professional-registration" className="w-100">
-                  <button type="button" className="btn btn-join fs-5 btn-sm">
+                <Link to="/registration-form" className="w-100">
+                  <button type="button" className="btn btn-join btn-sm">
                     Become A Professional
                   </button>
                 </Link>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 import { domainServiceData } from "../../assets/assets";
 import DomainService from "../../components/DomainService";
@@ -8,7 +9,10 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
 export default function DomainServiceDetailPage() {
-  const domainServiceDataElement = domainServiceData.map((domainservice) => (
+  const location = useLocation();
+  const { domain } = location.state || {}; 
+  
+  const domainServiceDataElement = domainServiceData[`${domain}`].map((domainservice) => (
     <DomainService
       key={domainservice.id}
       image={domainservice.image}
@@ -24,9 +28,9 @@ export default function DomainServiceDetailPage() {
       </header>
 
       <main>
-        <h1>Carpentry</h1>
+        <h1>{domain}</h1>
         <h4 className="subtitle">
-          Feel free to go through our Carpentry services catalog
+          Feel free to go through our {domain} services catalog
           <br />
           to understand what you can expect from us.
         </h4>
