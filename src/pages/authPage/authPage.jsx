@@ -14,7 +14,7 @@ import Footer from "../../components/Footer";
 
 
 
-function AuthPage({ setIsLoggedIn }) {
+function AuthPage({ setIsLoggedIn, setUsername_ }) {
   let { page } = useParams();
   const navigate = useNavigate();
 
@@ -68,9 +68,16 @@ function AuthPage({ setIsLoggedIn }) {
       return;
     }
 
+    const userData = {
+      username: username,
+      password: password
+    }
+
     setError('');
     alert('Login successful!');
 	  setIsLoggedIn(true);
+    setUsername_(username);
+    localStorage.setItem("loggedInUser", JSON.stringify(userData));
     navigate('/home'); // Redirect to home page after successful login
   };
 

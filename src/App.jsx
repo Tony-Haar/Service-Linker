@@ -23,6 +23,11 @@ import ProInformation from "./components/ProInformation";
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState(() => {
+    const storedUser = localStorage.getItem("loggedInUser");
+    return storedUser ? JSON.parse(storedUser).username : "";
+  });
+
   const location = useLocation(); // Now inside BrowserRouter context
 
   const hideNavbarRoutes = ["/auth/signin", "/auth/signup", "/registration-form"];
@@ -30,13 +35,17 @@ function AppContent() {
   return (
     <>
       {!hideNavbarRoutes.includes(location.pathname) && (
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Navbar 
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn} 
+          username = {username}
+        />
       )}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/auth/:page"
-          element={<AuthPage setIsLoggedIn={setIsLoggedIn} />}
+          element={<AuthPage setIsLoggedIn={setIsLoggedIn} setUsername_ = {setUsername}/>}
         />
         <Route path="/home" element={<HomePage />} />
         <Route path="/professional-profiles" element={<ProfilesPage />} />

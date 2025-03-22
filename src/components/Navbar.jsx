@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.png";
 
-export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
+export default function Navbar({ isLoggedIn, setIsLoggedIn, username }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -12,6 +12,7 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
 
   const handleLogout = () => {
     setIsLoggedIn(false); // Update login state
+    localStorage.removeItem("loggedInUser");
     alert("Logged out successfully!");
   };
 
@@ -22,6 +23,9 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
           <a className="navbar-brand" href="/home">
             <img src={Logo} alt="Fix-It-Logo" className="Logo" />
           </a>
+          {isLoggedIn && (
+            <p>{username}</p>
+          )}
           <button
             className="navbar-toggler"
             type="button"
