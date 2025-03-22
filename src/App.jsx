@@ -19,7 +19,7 @@ import Professionals from "./pages/Professionals/Professionals";
 import ProfessionalRegistration from "./pages/ProfessionalRegistration/ProfessionalRegistration";
 import ProInformation from "./components/ProInformation";
 import RequestPage from "./pages/requestsPage/requestsPage";
-
+import ExchangePage from "./pages/exchangePage/ExchangePage";
 
 
 function AppContent() {
@@ -53,6 +53,7 @@ function AppContent() {
           isLoggedIn={isLoggedIn} 
           setIsLoggedIn={setIsLoggedIn} 
           username = {username}
+          userType = {userType}
         />
       )}
       <Routes>
@@ -79,6 +80,8 @@ function AppContent() {
         <Route path="/pro-information" element={<ProInformation />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/professionals" element={<Professionals isLoggedIn={isLoggedIn} username = {username}/>} />
+        <Route path="/profile" element={<ProfessionalProfilePage/>} />
+        <Route path="/exchanges" element={<ExchangePage />} />
         <Route path="/call" element={<OrderProfessional/>} />
       </Routes>
     </>

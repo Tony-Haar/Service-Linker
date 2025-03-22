@@ -6,7 +6,7 @@ import Logo from "../assets/Logo.png";
 
 
 
-export default function Navbar({ isLoggedIn, setIsLoggedIn, username }) {
+export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -44,6 +44,16 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username }) {
             id="navbarNav"
           >
             <ul className="navbar-nav ms-auto navbar-menu text-center d-flex gap-0">
+              {(userType === "provider" && isLoggedIn)&& (
+                <li className="nav-item">
+                  <Link
+                    to="/requests"
+                    className="nav-link navbar-link-item fs-5 fs-md-6"
+                  >
+                    Requests
+                  </Link>
+              </li>
+              )}
               <li className="nav-item">
                 <Link
                   to="/services"
