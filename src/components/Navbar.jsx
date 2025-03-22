@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import Logo from "../assets/Logo.png";
+
+
 
 export default function Navbar({ isLoggedIn, setIsLoggedIn, username }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +23,9 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username }) {
     <>
       <nav className="navbar container-fluid navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/home">
+          <Link className="navbar-brand" to = "/">
             <img src={Logo} alt="Fix-It-Logo" className="Logo" />
-          </a>
+          </Link>
           {isLoggedIn && (
             <p>{username}</p>
           )}

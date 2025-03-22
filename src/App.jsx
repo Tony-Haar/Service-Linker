@@ -18,6 +18,7 @@ import ServicesPage from "./pages/servicePage/ServicesPage";
 import Professionals from "./pages/Professionals/Professionals";
 import ProfessionalRegistration from "./pages/ProfessionalRegistration/ProfessionalRegistration";
 import ProInformation from "./components/ProInformation";
+import RequestPage from "./pages/requestsPage/requestsPage";
 
 
 
@@ -27,6 +28,19 @@ function AppContent() {
     const storedUser = localStorage.getItem("loggedInUser");
     return storedUser ? JSON.parse(storedUser).username : "";
   });
+
+  //const userType = localStorage.getItem("users");
+  let userType = ""
+  if(username !== "") {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find(user => user.username === username);
+    if (user) {
+      userType = user.userType;
+      console.log(userType);
+    } else {
+      console.warn("User not found");
+    }
+  }
 
   const location = useLocation(); // Now inside BrowserRouter context
 
@@ -42,7 +56,10 @@ function AppContent() {
         />
       )}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} username = {username}/>}/>
+        {userType === "provider" && (
+          <Route path="/requests" element={<RequestPage />}/>
+        )}
         <Route
           path="/auth/:page"
           element={<AuthPage setIsLoggedIn={setIsLoggedIn} setUsername_ = {setUsername}/>}
@@ -61,7 +78,7 @@ function AppContent() {
         <Route path="/registration-form" element={<RegistrationForm/>} />
         <Route path="/pro-information" element={<ProInformation />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="/professionals" element={<Professionals/>} />
+        <Route path="/professionals" element={<Professionals isLoggedIn={isLoggedIn} username = {username}/>} />
         <Route path="/call" element={<OrderProfessional/>} />
       </Routes>
     </>

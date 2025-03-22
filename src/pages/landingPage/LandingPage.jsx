@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import { assets } from "../../assets/assets";
 import Service from "../../components/service";
 import Navbar from "../../components/Navbar";
@@ -9,10 +10,62 @@ import ProInformation from "../../components/ProInformation";
 import { serviceData } from "../../assets/assets";
 import "./landingPage.css";
 
-function LandingPage() {
+
+
+function LandingPage({ isLoggedIn, username }) {
+  const navigate = useNavigate();
+  const [request, setRequest] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
   const serviceElements = serviceData.map((service) => (
     <Service key={service.id} service={service.service} image={service.image} />
   ));
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if(isLoggedIn) {
+      let userType = ""
+      if(username !== "") {
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const user = users.find(user => user.username === username);
+        if (user) {
+          userType = user.userType;
+        } else {
+          console.warn("User not found");
+        }
+      }
+      const requests = JSON.parse(localStorage.getItem('requests')) || [];
+      const urgency = 0;
+      if(userType === "needer") {
+        navigate("/professionals", {
+          state: {
+            request: request,
+            from: username
+          }
+        })
+        const newRequest = { username, request, urgency};
+        requests.push(newRequest);
+        localStorage.setItem('requests', JSON.stringify(requests));
+      } else {
+        navigate("/requests", {
+          state: {
+            request: request,
+            from: username
+          }
+        })
+        const newRequest = { username, request, urgency};
+        requests.push(newRequest);
+        localStorage.setItem('requests', JSON.stringify(requests));
+      }
+    } else {
+      console.log("popup");
+      setShowModal(true);
+    }
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -27,10 +80,17 @@ function LandingPage() {
               <form className="d-flex mt-3">
                 <input
                   type="text"
+                  name="request"
+                  value={request}
+                  onChange = {(e) => {setRequest(e.target.value)}}
                   className="form-control me-2"
                   placeholder="Search for any service"
                 />
-                <button type="submit" className="btn btn-search px-3">
+                <button 
+                  type="submit" 
+                  className="btn btn-search px-3"
+                  onClick = {handleClick}
+                >
                   Search
                 </button>
               </form>
@@ -51,6 +111,45 @@ function LandingPage() {
           </div>
         </div>
       </header>
+
+      {/* Modal */}
+      {showModal && (
+        <div
+          className="modal fade show"
+          style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+          tabIndex="-1"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Login Required</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeModal}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>You need to log in to proceed with your request.</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+                <Link to="/auth/signin">
+                  <button type="button" className="btn btn-primary">
+                    Login
+                  </button>
+                </Link>
+                </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="partners-container container-fluid mt-5 mb-5 py-5">
         <h2 className="text-center mb-4">Partners</h2>
@@ -99,139 +198,7 @@ function LandingPage() {
               </div>
             </div>
           </section>
-
-          {/* <section className="section-first-row d-flex flex-column justify-content-center align-items-center container mt-5 mb-5 py-5 px-5 gap-5">
-            <div className="row gap-5 d-flex align-items-center flex-wrap">
-              <div className="col-lg-6 col-md-12 text-start offer-illustration-left">
-                <img
-                  src={assets.Warranty}
-                  className="img-fluid offer-image"
-                  alt="Warranty Illustrator"
-                />
-              </div>
-
-              <div className="col-lg-6 col-md-12 text-start offer-illustration-right mt-0">
-                <div className="offer-illustration-right-text text-start">
-                  <h1 className="text-start">WARRANTY ASSURANCE</h1>
-                  <p className="text-start">
-                    In each point H2 and H3 provide and explain <br />
-                    each offer for both the customer user and service <br />
-                    proposer.
-                  </p>
-                  <Link to="/benefits">
-                    <button className="btn btn-primary text-start">
-                      Learn More
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
-          {/* <section className="section-first-row d-flex flex-column justify-content-center align-items-center container mt-5 mb-5 py-5 px-5 gap-5">
-            <div className="row gap-5">
-              <div className="col text-start offer-illustration-left">
-                <img
-                  src={assets.Warranty}
-                  className="img-fluid offer-image"
-                  alt="Warranty Illustrator"
-                />
-              </div>
-
-              <div className="col text-start offer-illustration-right mt-0">
-                <div className="offer-illustration-right-text text-start">
-                  <h1 className="text-start">WARRANTY ASSURANCE</h1>
-                  <p className="text-start">
-                    In each point H2 and H3 provide and explain <br />
-                    each offer for both the customer user and service <br />
-                    proposer.
-                  </p>
-                  <Link to="/benefits">
-                    <button className="btn btn-primary text-start">
-                      Learn More
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
-          {/* <section className="pro-service row align-items-center flex-md-row-reverse">
-            <div className="row">
-              <div className="col-lg-6 text-center">
-                <img
-                  src={assets.GettheDeal}
-                  className="img-fluid offer-image"
-                  alt="Good Deal Illustration"
-                />
-              </div>
-              <div className="col-lg-6 pro-service-inner-left-container">
-                <h1>GOOD DEAL WITH US</h1>
-                <p>
-                  In each point H2 and H3 provide and explain <br />
-                  each Pro service for both the customer user <br />
-                  and service proposer.
-                </p>
-                <Link to="/benefits">
-                  <button className="btn btn-success">Learn More</button>
-                </Link>
-              </div>
-            </div>
-          </section> */}
         </div>
-
-        {/* ..........END................... */}
-
-        {/* <h1 className="offer-label mt-5">Offers</h1>
-        <div className="line w-100"></div>
-        <section className="offer">
-          <div className="offer-illustration">
-            <img
-              src={assets.Warranty}
-              className="img-fluid"
-              alt="Warranty illustrator"
-            />
-          </div>
-          <div className="offer-inner-right-container">
-            <div>
-              <h1>WARRANTY ASSURANCE</h1>
-            </div>
-            <p>
-              in each point H2 and H3 provide and explain <br />
-              each offer for both the customer user and service <br />
-              proposer
-            </p>
-            <Link to="/benefits">
-              <button className="btn">Learn More</button>
-            </Link>
-          </div>
-        </section>
-
-        <section className="pro-service">
-          <div className="pro-service-inner-left-container">
-            <div>
-              <h1>GOOD DEAL WITH US</h1>
-            </div>
-            <p>
-              in each point H2 and H3 provide and explain <br />
-              each Pro service for both the customer user <br />
-              and service proposer
-            </p>
-            <Link to="/benefits">
-              <button>Learn More</button>
-            </Link>
-          </div>
-          <div className="pro-service-illustration">
-            <img
-              src={assets.GettheDeal}
-              className="img-fluid "
-              alt="Six Image"
-            />
-          </div>
-        </section> */}
-
-        {/* .............ENDS HERE................ */}
-
         <div className="testimonies-container">
           <h1>Testimonies</h1>
         </div>

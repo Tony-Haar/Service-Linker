@@ -8,16 +8,46 @@ import Footer from "../../components/Footer";
 
 
 
-const Professionals = () => {
+const Professionals = ({isLoggedIn, username}) => {
   const location = useLocation();
-  const { domain, service } = location.state || {}; 
+  const { domain, service, request } = location.state || {}; 
   
   const [selectedService, setSelectedService] = useState(domain || "carpentry");
+
+  let requestElements = null;
+  if(isLoggedIn) {
+    const requests = JSON.parse(localStorage.getItem('requests')) || [];
+    console.log(requests);
+    const userRequests = requests.filter(req => req.username === username);
+
+    requestElements = userRequests.map((req) => (
+      <div style = {
+        {
+          display: "flex", 
+          flexDirection: "row", 
+          alignItems: "center", 
+          justifyContent: "flex-end",
+          gap: "20px",
+          marginBottom: "40px"
+        }
+      }>
+        <p style = {{margin: "0"}}>No - 1</p>
+        <p style = {{margin: "0"}}>{req.request}</p>
+        <select name="urgency" id="">
+          <option value="">level 1</option>
+          <option value="">level 2</option>
+          <option value="">level 3</option>
+        </select>
+        <Button>check</Button>
+      </div>
+    ))
+  }
 
   return (
     <>
       {/* <Navbar /> */}
       <Container className="mt-5 mb-5">
+        {requestElements}
         <h2 className="text-center mb-4">Find a Professional</h2>
 
         <Form.Group controlId="serviceSelect" className="mb-4">

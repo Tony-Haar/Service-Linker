@@ -69,7 +69,7 @@ const RegistrationForm = () => {
       const users = JSON.parse(localStorage.getItem('users')) || [];
       console.log(users)
       // Check if the username already exists
-      const userExists = users.some(user => user.username === formData.name);
+      const userExists = users.some(user => user.username === formData.email);
       if (userExists) {
         setError('Username already taken!');
         setLoading(false);
