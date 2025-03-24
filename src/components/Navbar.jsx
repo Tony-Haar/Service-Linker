@@ -23,12 +23,10 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
     <>
       <nav className="navbar container-fluid navbar-expand-lg">
         <div className="container-fluid">
-          <Link className="navbar-brand" to = "/">
+          <Link className="navbar-brand" to="/">
             <img src={Logo} alt="Fix-It-Logo" className="Logo" />
           </Link>
-          {isLoggedIn && (
-            <p>{username}</p>
-          )}
+          {isLoggedIn && <p>{username}</p>}
           <button
             className="navbar-toggler"
             type="button"
@@ -44,7 +42,7 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
             id="navbarNav"
           >
             <ul className="navbar-nav ms-auto navbar-menu text-center d-flex gap-0">
-              {(userType === "provider" && isLoggedIn)&& (
+              {userType === "provider" && isLoggedIn && (
                 <li className="nav-item">
                   <Link
                     to="/requests"
@@ -52,7 +50,7 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
                   >
                     Requests
                   </Link>
-              </li>
+                </li>
               )}
               <li className="nav-item">
                 <Link
@@ -87,7 +85,7 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
                   </Link>
                 )}
                 <Link to="/registration-form" className="w-100">
-                  <button type="button" className="btn btn-join btn-sm">
+                  <button type="button" className="btn btn-join fs-5 btn-sm">
                     Become A Professional
                   </button>
                 </Link>

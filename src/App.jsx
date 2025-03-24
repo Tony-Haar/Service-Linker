@@ -20,7 +20,9 @@ import ProfessionalRegistration from "./pages/ProfessionalRegistration/Professio
 import ProInformation from "./components/ProInformation";
 import RequestPage from "./pages/requestsPage/requestsPage";
 import ExchangePage from "./pages/exchangePage/ExchangePage";
-
+import ProfessionalChats from "./pages/professionalChats/ProfessionalChats";
+import UserChats from "./pages/UserChats/UserChats";
+import BookingPage from "./pages/BookingPage/BookingPage";
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,11 +31,10 @@ function AppContent() {
     return storedUser ? JSON.parse(storedUser).username : "";
   });
 
-  //const userType = localStorage.getItem("users");
-  let userType = ""
-  if(username !== "") {
+  let userType = "";
+  if (username !== "") {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find(user => user.username === username);
+    const user = users.find((user) => user.username === username);
     if (user) {
       userType = user.userType;
       console.log(userType);
@@ -42,28 +43,47 @@ function AppContent() {
     }
   }
 
-  const location = useLocation(); // Now inside BrowserRouter context
+  const location = useLocation();
 
-  const hideNavbarRoutes = ["/auth/signin", "/auth/signup", "/registration-form"];
+  const hideNavbarRoutes = [
+    "/auth/signin",
+    "/auth/signup",
+    "/registration-form",
+  ];
+  // ......................new code....................
+  const [messages, setMessages] = useState([]);
+
+  const sendMessage = (sender, text) => {
+    setMessages([...messages, { text, sender }]);
+  };
+  // ......................end of new code....................
 
   return (
     <>
       {!hideNavbarRoutes.includes(location.pathname) && (
-        <Navbar 
-          isLoggedIn={isLoggedIn} 
-          setIsLoggedIn={setIsLoggedIn} 
-          username = {username}
-          userType = {userType}
+        <Navbar
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          username={username}
+          userType={userType}
         />
       )}
       <Routes>
-        <Route path="/" element={<LandingPage isLoggedIn={isLoggedIn} username = {username}/>}/>
+        <Route
+          path="/"
+          element={<LandingPage isLoggedIn={isLoggedIn} username={username} />}
+        />
         {userType === "provider" && (
-          <Route path="/requests" element={<RequestPage />}/>
+          <Route path="/requests" element={<RequestPage />} />
         )}
         <Route
           path="/auth/:page"
-          element={<AuthPage setIsLoggedIn={setIsLoggedIn} setUsername_ = {setUsername}/>}
+          element={
+            <AuthPage
+              setIsLoggedIn={setIsLoggedIn}
+              setUsername_={setUsername}
+            />
+          }
         />
         <Route path="/home" element={<HomePage />} />
         <Route path="/professional-profiles" element={<ProfilesPage />} />
@@ -76,13 +96,32 @@ function AppContent() {
         <Route path="/find-pro" element={<FindProfessionalPage />} />
         <Route path="/pro-profile" element={<ProfessionalProfilePage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/registration-form" element={<RegistrationForm/>} />
+        <Route path="/registration-form" element={<RegistrationForm />} />
         <Route path="/pro-information" element={<ProInformation />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="/professionals" element={<Professionals isLoggedIn={isLoggedIn} username = {username}/>} />
-        <Route path="/profile" element={<ProfessionalProfilePage/>} />
+        <Route
+          path="/professionals"
+          element={
+            <Professionals isLoggedIn={isLoggedIn} username={username} />
+          }
+        />
+        <Route path="/profile" element={<ProfessionalProfilePage />} />
         <Route path="/exchanges" element={<ExchangePage />} />
-        <Route path="/call" element={<OrderProfessional/>} />
+        <Route path="/call" element={<OrderProfessional />} />
+
+        {/* .......................... */}
+        <Route path="/booking" element={<BookingPage />} />
+        <Route
+          path="/user-chat"
+          element={<UserChats messages={messages} sendMessage={sendMessage} />}
+        />
+        <Route
+          path="/professional-chat"
+          element={
+            <ProfessionalChats messages={messages} sendMessage={sendMessage} />
+          }
+        />
+        {/* ........................... */}
       </Routes>
     </>
   );

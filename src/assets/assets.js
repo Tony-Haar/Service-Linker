@@ -16,6 +16,71 @@ import Illustration from "./illustration.png";
 import Illustration1 from "./illustration1.png";
 import Illustration2 from "./illustration2.png";
 
+import certifiedProfessional from "./certifiedProfessional.png";
+import clientSecurity from "./clientSecurity.png";
+import customerSupport from "./customerSupport.png";
+import easyBooking from "./easyBooking.png";
+import trustedTechnician from "./trustedTechnician.png";
+import happyClient from "./happyClient.png";
+import onTime from "./onTime.png";
+
+export const whyChooseUs = {
+  trustedTechnician: [
+    {
+      id: 1,
+      image: trustedTechnician,
+      title: "Expert Technicians",
+      description:
+        "Our technicians are experts in their field and provide quality service.",
+    },
+  ],
+  easyBooking: [
+    {
+      id: 2,
+      image: easyBooking,
+      title: "Easy Booking",
+      description:
+        "Our platform makes it easy to book services and get the job done.",
+    },
+  ],
+  onTime: [
+    {
+      id: 3,
+      image: onTime,
+      title: "On-Time Service",
+      description:
+        "We provide on-time service and ensure that the job is done efficiently.",
+    },
+  ],
+  customerSupport: [
+    {
+      id: 4,
+      image: customerSupport,
+      title: "Customer Support",
+      description:
+        "Our customer support team is available 24/7 to assist you with any queries.",
+    },
+  ],
+  clientSecurity: [
+    {
+      id: 5,
+      image: clientSecurity,
+      title: "Client Security",
+      description:
+        "We ensure the security of our clients and their personal information.",
+    },
+  ],
+  happyClient: [
+    {
+      id: 6,
+      image: happyClient,
+      title: "Happy Clients",
+      description:
+        "Our clients are satisfied with our services and recommend us to others.",
+    },
+  ],
+};
+
 // carpentry
 import FurnitureRepair from "./carpentry/furniture-repair.jpeg";
 import DoorWindowRepair from "./carpentry/door-and-window-repair.jpeg";
@@ -113,7 +178,7 @@ export const assets = {
 };
 
 export const professionals = {
-  carpentry: [
+  Carpentry: [
     {
       id: 1,
       image: carpenter1,
@@ -139,7 +204,7 @@ export const professionals = {
       contact: "555-678-1234",
     },
   ],
-  electrical: [
+  Electrical: [
     {
       id: 4,
       image: electrician1,
@@ -174,7 +239,7 @@ export const professionals = {
       contact: "666-555-4444",
     },
   ],
-  plumbing: [
+  Plumbing: [
     {
       id: 8,
       image: plumber1,
@@ -208,7 +273,7 @@ export const professionals = {
       contact: "999-888-7777",
     },
   ],
-  sanitation: [
+  Sanitation: [
     {
       id: 12,
       image: carpenter1,
@@ -234,7 +299,7 @@ export const professionals = {
       contact: "222-111-0000",
     },
   ],
-  painting: [
+  Painting: [
     {
       id: 15,
       image: painter1,
@@ -268,7 +333,7 @@ export const professionals = {
       contact: "666-555-4444",
     },
   ],
-  roofing: [
+  Roofing: [
     {
       id: 19,
       image: carpenter1,
@@ -302,7 +367,7 @@ export const professionals = {
       contact: "666-555-4444",
     },
   ],
-  mechanical: [
+  Mechanical: [
     {
       id: 23,
       image: mechanic1,
@@ -611,7 +676,6 @@ export const services = [
   },
 ];
 
-
 export const serviceData = [
   {
     id: 1,
@@ -649,10 +713,7 @@ export const serviceData = [
     service: "Sanitation",
     image: Image10,
   },
-  
 ];
-
-
 
 export const serviceRelatedImageData = {
   mechanics: [
@@ -765,13 +826,11 @@ export const serviceRelatedImageData = {
       repair_short: "",
     },
   ],
- 
 };
 
-
-export const domainServiceData = { 
-  Carpentry: [ 
-    { 
+export const domainServiceData = {
+  Carpentry: [
+    {
       id: 1,
       image: FurnitureRepair,
       service_type: "Furniture Repair",
@@ -890,7 +949,7 @@ export const domainServiceData = {
         "Building and repairing custom furniture pieces.",
         "Designing and fixing bespoke wooden structures and installations.",
       ],
-    }
+    },
   ],
   Electricity: [
     {
@@ -900,9 +959,9 @@ export const domainServiceData = {
       services_list: [
         "Installing electrical wiring for new constructions and renovations.",
         "Upgrading existing electrical systems to meet modern standards.",
-        "Setting up lighting systems, outlets, and switches in residential and commercial spaces."
-      ]
-    },     
+        "Setting up lighting systems, outlets, and switches in residential and commercial spaces.",
+      ],
+    },
     {
       id: 2,
       image: HouseEnergyAudit,
@@ -910,9 +969,9 @@ export const domainServiceData = {
       services_list: [
         "Conducting energy audits to identify areas for electrical energy savings.",
         "Recommending and installing energy-efficient lighting and appliances.",
-        "Optimizing electrical systems for reduced energy consumption."
-      ]
-    },     
+        "Optimizing electrical systems for reduced energy consumption.",
+      ],
+    },
     {
       id: 3,
       image: SolarPanel,
@@ -920,9 +979,9 @@ export const domainServiceData = {
       services_list: [
         "Designing and installing solar energy systems for homes and businesses.",
         "Providing ongoing maintenance and monitoring of solar power setups.",
-        "Offering advice on solar energy savings and system optimization."
-      ]
-    }    
+        "Offering advice on solar energy savings and system optimization.",
+      ],
+    },
   ],
   Mechanics: [
     {
@@ -932,9 +991,9 @@ export const domainServiceData = {
       services_list: [
         "Performing engine diagnostics to identify issues.",
         "Repairing or replacing engine components like pistons, valves, and timing belts.",
-        "Offering tune-up services to optimize engine performance."
-      ]
-    },  
+        "Offering tune-up services to optimize engine performance.",
+      ],
+    },
     {
       id: 2,
       image: TransmissionServices,
@@ -942,8 +1001,8 @@ export const domainServiceData = {
       services_list: [
         "Inspecting and diagnosing transmission issues.",
         "Repairing or replacing faulty transmission systems.",
-        "Offering fluid flushes and maintenance for smoother gear transitions."
-      ]
+        "Offering fluid flushes and maintenance for smoother gear transitions.",
+      ],
     },
     {
       id: 3,
@@ -952,8 +1011,8 @@ export const domainServiceData = {
       services_list: [
         "Inspecting and repairing brake pads, discs, and calipers.",
         "Providing brake fluid replacements and system flushing.",
-        "Offering full brake system diagnostics to ensure safe vehicle operation."
-      ]
+        "Offering full brake system diagnostics to ensure safe vehicle operation.",
+      ],
     },
     {
       id: 4,
@@ -962,9 +1021,9 @@ export const domainServiceData = {
       services_list: [
         "Diagnosing suspension and steering system issues.",
         "Replacing worn-out shocks, struts, and steering components.",
-        "Providing alignment and balancing services to improve driving stability."
-      ]
-    }               
+        "Providing alignment and balancing services to improve driving stability.",
+      ],
+    },
   ],
   Plumbing: [
     {
@@ -974,8 +1033,8 @@ export const domainServiceData = {
       services_list: [
         "Clearing blocked drains and sewer lines using advanced equipment.",
         "Providing hydro-jetting services for stubborn clogs.",
-        "Fixing slow-draining sinks, bathtubs, and toilets."
-      ]
+        "Fixing slow-draining sinks, bathtubs, and toilets.",
+      ],
     },
     {
       id: 2,
@@ -984,8 +1043,8 @@ export const domainServiceData = {
       services_list: [
         "Repairing or replacing damaged or burst pipes.",
         "Offering repiping services for old or corroded plumbing systems.",
-        "Providing pipe insulation to prevent freezing in colder months."
-      ]
+        "Providing pipe insulation to prevent freezing in colder months.",
+      ],
     },
     {
       id: 3,
@@ -994,8 +1053,8 @@ export const domainServiceData = {
       services_list: [
         "Installing traditional or tankless water heaters.",
         "Repairing faulty water heaters and addressing temperature issues.",
-        "Providing regular maintenance and flushing to extend water heater lifespan."
-      ]
+        "Providing regular maintenance and flushing to extend water heater lifespan.",
+      ],
     },
     {
       id: 4,
@@ -1004,8 +1063,8 @@ export const domainServiceData = {
       services_list: [
         "Installing new toilets and replacing outdated models.",
         "Repairing leaking, running, or clogged toilets.",
-        "Fixing issues with toilet flushing systems and water flow."
-      ]
+        "Fixing issues with toilet flushing systems and water flow.",
+      ],
     },
     {
       id: 5,
@@ -1014,8 +1073,8 @@ export const domainServiceData = {
       services_list: [
         "Detecting leaks in walls, ceilings, and floors.",
         "Repairing leaks in both visible and hidden plumbing systems.",
-        "Providing water pressure tests and inspections to avoid future issues."
-      ]
-    }            
-  ]
+        "Providing water pressure tests and inspections to avoid future issues.",
+      ],
+    },
+  ],
 };

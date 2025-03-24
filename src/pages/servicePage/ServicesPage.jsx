@@ -1,33 +1,66 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { services } from "../../assets/assets";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+
 const ServicesPage = () => {
+  const navigate = useNavigate();
+
+  const handleBookNow = (service) => {
+    navigate("/booking", { state: { service } });
+  };
+
+  const handleCardClick = (service) => {
+    navigate("/professionals", { state: { service: service.name } });
+  };
 
   return (
     <>
-      {/* <Navbar /> */}
-
       <Container className="mt-5 w-75">
         <h2 className="text-center mb-4">Our Repair Services</h2>
         <Row>
           {services.map((service) => (
             <Col md={4} key={service.id} className="mb-4">
-              <Card className="shadow-sm">
+              {/* <Link
+                to="/professionals"
+                className=""
+                onClick={() => {
+                  navigate("/professionals", {
+                    state: {
+                      service: service.name,
+                    },
+                  });
+                  console.log(service.name);
+                }}
+              > */}
+              <Card
+                className="shadow-sm"
+                onClick={() => handleCardClick(service)}
+              >
                 <Card.Img
                   variant="top"
                   src={service.image}
                   alt={service.name}
-                  style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    objectFit: "cover",
+                  }}
                 />
                 <Card.Body>
                   <Card.Title>{service.name}</Card.Title>
                   <Card.Text>{service.description}</Card.Text>
-                  <Button variant="primary">Book Now</Button>
+                  {/* <Button
+                      variant="primary"
+                      onClick={() => handleBookNow(service)}
+                    >
+                      Book Now
+                    </Button> */}
                 </Card.Body>
               </Card>
+              {/* </Link> */}
             </Col>
           ))}
         </Row>
@@ -41,10 +74,10 @@ const ServicesPage = () => {
           </Col>
         </Row>
       </Container>
-
       <Footer />
     </>
   );
 };
 
 export default ServicesPage;
+

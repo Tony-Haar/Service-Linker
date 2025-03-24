@@ -19,17 +19,12 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 function HomePage() {
-  const [selectedDomain, setSelectedDomain] = useState('');
-  const [selectedService, setSelectedService] = useState('');
+  const [selectedService, setSelectedService] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
 
-
   const serviceElements = serviceData.map((service) => (
-    <Service 
-      key={service.id} 
-      service={service.service} 
-      image={service.image} 
-    />
+    <Service key={service.id} service={service.service} image={service.image} />
   ));
 
   const style = {
@@ -53,47 +48,48 @@ function HomePage() {
   ));
 
   return (
-    <div className="home-page-container">
+    <div className="home-page-container container-fluid">
       <header>
-        {/* <Navbar /> */}
         <div className="header-hero home-hero">
           <div>
             <h1>Welcome To Service-Linker</h1>
             <p>
               Connecting you with qualified professionals for quick assistance.
             </p>
-            <form onSubmit ={(event) => {
-              event.preventDefault();
-              navigate("/professionals", {
-                state: {
-                  domain: selectedDomain,
-                  service: selectedService
-                }
-              });
-            }}>
-              <select 
-                name="domains" 
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                navigate("/professionals", {
+                  state: {
+                    service: selectedService,
+                    option: selectedOption,
+                  },
+                });
+              }}
+            >
+              <select
+                name="domains"
                 id="domain-select"
-                value = {selectedDomain}
-                onChange = {e => {
-                  setSelectedDomain(e.target.value)
+                value={selectedService}
+                onChange={(e) => {
+                  setSelectedService(e.target.value);
                 }}
               >
                 <option value="">--Please select the repair domain--</option>
-                <option value="carpentry">Carpentry</option>
-                <option value="electrical">Electrical</option>
-                <option value="plumbing">Plumbing</option>
-                <option value="sanitation">Sanitation</option>
-                <option value="painting">Painting</option>
-                <option value="roofing">Roofing</option>
-                <option value="mechanical">Mechanical</option>
+                <option value="Carpentry">Carpentry</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Sanitation">Sanitation</option>
+                <option value="Painting">Painting</option>
+                <option value="Roofing">Roofing</option>
+                <option value="Mechanical">Mechanical</option>
               </select>
-              <select 
-                name="services" 
+              <select
+                name="services"
                 id="service-select"
-                value = {selectedService}
-                onChange = {e => {
-                  setSelectedService(e.target.value)
+                value={selectedOption}
+                onChange={(e) => {
+                  setSelectedOption(e.target.value);
                 }}
               >
                 <option value="">--select the service type--</option>
@@ -108,12 +104,7 @@ function HomePage() {
                 </option>
               </select>
               <br />
-              {/* <Link to="/professionals"> */}
-                <input 
-                  type="submit" 
-                  value="FIND A PROFESSIONAL"
-                />
-              {/* </Link> */}
+              <input type="submit" value="FIND A PROFESSIONAL" />
             </form>
           </div>
           <div className="gears-container">
@@ -122,11 +113,15 @@ function HomePage() {
                 <img
                   src={assets.BerkeleyGear}
                   width="200px"
-                  className="honolulu-gear"
+                  className="honolulu-gear d-none d-lg-block"
                 />
               </div>
             </div>
-            <img src={assets.OrangeGear} width="300px" className="yale-gear" />
+            <img
+              src={assets.OrangeGear}
+              width="300px"
+              className="yale-gear d-none d-lg-block"
+            />
           </div>
         </div>
       </header>

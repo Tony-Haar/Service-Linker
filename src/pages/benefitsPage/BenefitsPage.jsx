@@ -7,13 +7,12 @@ import Illustration1 from "../../assets/Agreement.png";
 import Illustration2 from "../../assets/GoodDeal.jpg";
 
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 export default function BenefitsPage() {
   return (
     <div className="benefits-page-container">
-      <header>
-        {/* <Navbar /> */}
-      </header>
+      <header></header>
       <main>
         <h1>Benefits of our services</h1>
 

@@ -1,38 +1,40 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { professionals } from "../../assets/assets";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
+const Professionals = ({ isLoggedIn, username }) => {
+  const navigate = useNavigate();
 
-
-const Professionals = ({isLoggedIn, username}) => {
   const location = useLocation();
-  const { domain, service, request } = location.state || {}; 
-  
-  const [selectedService, setSelectedService] = useState(domain || "carpentry");
+  const { service, option, request } = location.state || {};
+
+  const [selectedService, setSelectedService] = useState(
+    service || "Carpentry"
+  );
 
   let requestElements = null;
-  if(isLoggedIn) {
-    const requests = JSON.parse(localStorage.getItem('requests')) || [];
+  if (isLoggedIn) {
+    const requests = JSON.parse(localStorage.getItem("requests")) || [];
     console.log(requests);
-    const userRequests = requests.filter(req => req.username === username);
+    const userRequests = requests.filter((req) => req.username === username);
 
     requestElements = userRequests.map((req) => (
-      <div style = {
-        {
-          display: "flex", 
-          flexDirection: "row", 
-          alignItems: "center", 
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
           justifyContent: "flex-end",
           gap: "20px",
-          marginBottom: "40px"
-        }
-      }>
-        <p style = {{margin: "0"}}>No - 1</p>
-        <p style = {{margin: "0"}}>{req.request}</p>
+          marginBottom: "40px",
+        }}
+      >
+        <p style={{ margin: "0" }}>No - 1</p>
+        <p style={{ margin: "0" }}>{req.request}</p>
         <select name="urgency" id="">
           <option value="">level 1</option>
           <option value="">level 2</option>
@@ -40,8 +42,12 @@ const Professionals = ({isLoggedIn, username}) => {
         </select>
         <Button>check</Button>
       </div>
-    ))
+    ));
   }
+
+  const handleCardClick = () => {
+    navigate("/pro-profile");
+  };
 
   return (
     <>
@@ -67,7 +73,7 @@ const Professionals = ({isLoggedIn, username}) => {
         <Row>
           {professionals[selectedService].map((pro) => (
             <Col md={4} key={pro.id} className="mb-4">
-              <Card className="shadow-sm">
+              <Card className="shadow-sm" onClick={() => handleCardClick()}>
                 <Card.Img
                   variant="top"
                   src={pro.image}
@@ -82,7 +88,7 @@ const Professionals = ({isLoggedIn, username}) => {
                     <strong>Rating:</strong> ⭐{pro.rating} <br />
                     <strong>Contact:</strong> {pro.contact}
                   </Card.Text>
-                  <Button variant="primary">Book {pro.name}</Button>
+                  {/* <Button variant="primary">Book {pro.name}</Button> */}
                 </Card.Body>
               </Card>
             </Col>

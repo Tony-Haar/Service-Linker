@@ -9,8 +9,7 @@ import ProInformation from "../../components/ProInformation";
 
 import { serviceData } from "../../assets/assets";
 import "./landingPage.css";
-
-
+import WhyChooseUs from "../../components/WhyChooseUs";
 
 function LandingPage({ isLoggedIn, username }) {
   const navigate = useNavigate();
@@ -23,45 +22,45 @@ function LandingPage({ isLoggedIn, username }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if(isLoggedIn) {
-      let userType = ""
-      if(username !== "") {
+    if (isLoggedIn) {
+      let userType = "";
+      if (username !== "") {
         const users = JSON.parse(localStorage.getItem("users") || "[]");
-        const user = users.find(user => user.username === username);
+        const user = users.find((user) => user.username === username);
         if (user) {
           userType = user.userType;
         } else {
           console.warn("User not found");
         }
       }
-      const requests = JSON.parse(localStorage.getItem('requests')) || [];
+      const requests = JSON.parse(localStorage.getItem("requests")) || [];
       const urgency = 0;
-      if(userType === "needer") {
+      if (userType === "needer") {
         navigate("/professionals", {
           state: {
             request: request,
-            from: username
-          }
-        })
-        const newRequest = { username, request, urgency};
+            from: username,
+          },
+        });
+        const newRequest = { username, request, urgency };
         requests.push(newRequest);
-        localStorage.setItem('requests', JSON.stringify(requests));
+        localStorage.setItem("requests", JSON.stringify(requests));
       } else {
         navigate("/requests", {
           state: {
             request: request,
-            from: username
-          }
-        })
-        const newRequest = { username, request, urgency};
+            from: username,
+          },
+        });
+        const newRequest = { username, request, urgency };
         requests.push(newRequest);
-        localStorage.setItem('requests', JSON.stringify(requests));
+        localStorage.setItem("requests", JSON.stringify(requests));
       }
     } else {
       console.log("popup");
       setShowModal(true);
     }
-  }
+  };
 
   const closeModal = () => {
     setShowModal(false);
@@ -82,14 +81,16 @@ function LandingPage({ isLoggedIn, username }) {
                   type="text"
                   name="request"
                   value={request}
-                  onChange = {(e) => {setRequest(e.target.value)}}
+                  onChange={(e) => {
+                    setRequest(e.target.value);
+                  }}
                   className="form-control me-2"
                   placeholder="Search for any service"
                 />
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn btn-search px-3"
-                  onClick = {handleClick}
+                  onClick={handleClick}
                 >
                   Search
                 </button>
@@ -145,7 +146,7 @@ function LandingPage({ isLoggedIn, username }) {
                     Login
                   </button>
                 </Link>
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -165,15 +166,16 @@ function LandingPage({ isLoggedIn, username }) {
         </div>
 
         {/* .................OFFERS SECTION.................. */}
+
         <div className="container-fluid offer-section">
           <div className="tex-start offer-label-container">
             <h1 className="offer-label text-start mt-5">Offers</h1>
             <div className="line mx-auto"></div>
           </div>
 
-          <section className="section-first-row container mt-5 mb-5 py-5 px-5 gap-5">
-            <div className="row-1 d-flex align-items-center gap-5">
-              <div className="col-lg-6 col-md-12 text-start offer-illustration-left">
+          <section className="container mt-5 mb-5 py-5 px-5 section-row">
+            <div className="d-flex flex-lg-row flex-column align-items-center justify-content-center gap-5">
+              <div className="col-lg-6 col-md-12 d-flex justify-content-center offer-illustration-image">
                 <img
                   src={assets.Warranty}
                   className="img-fluid offer-image"
@@ -181,42 +183,72 @@ function LandingPage({ isLoggedIn, username }) {
                 />
               </div>
 
-              <div className="col-lg-6 col-md-6 text-start offer-illustration-right">
-                <div className="offer-illustration-right-text text-start">
-                  <h1 className="text-start">WARRANTY ASSURANCE</h1>
-                  <p className="text-start">
+              <div className="col-lg-6 col-md-12 d-flex justify-content-center offer-illustration-text">
+                <div className="offer-illustration-center-text p-5 text-start">
+                  <h2>WARRANTY ASSURANCE</h2>
+                  <p>
                     In each point H2 and H3 provide and explain <br />
                     each offer for both the customer user and service <br />
                     proposer.
                   </p>
                   <Link to="/benefits">
-                    <button className="btn btn-primary text-start">
-                      Learn More
-                    </button>
+                    <button className="btn btn-primary">Learn More</button>
                   </Link>
                 </div>
               </div>
             </div>
           </section>
-        </div>
-        <div className="testimonies-container">
-          <h1>Testimonies</h1>
+
+          <section className="container mt-5 mb-5 py-5 px-5 section-row">
+            <div className="d-flex flex-lg-row flex-column align-items-center justify-content-center gap-5">
+              <div className="col-lg-6 col-md-12 d-flex justify-content-center offer-illustration-text">
+                <div className="offer-illustration-center-text p-5 text-start">
+                  <h2>GOOD DEAL WITH US</h2>
+                  <p>
+                    In each point H2 and H3 provide and explain <br />
+                    each offer for both the customer user and service <br />
+                    proposer.
+                  </p>
+                  <Link to="/benefits">
+                    <button className="btn btn-primary">Learn More</button>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-12 d-flex justify-content-center offer-illustration-image">
+                <img
+                  src={assets.GettheDeal}
+                  className="img-fluid offer-image"
+                  alt="Warranty Illustrator"
+                />
+              </div>
+            </div>
+          </section>
         </div>
 
-        <div className="reasons-container">
-          <h1>Why using our platform?</h1>
+        {/* ................................... */}
+
+        <div className="testimonies-container">
+          <h1 className="text-start mx-5">Testimonies</h1>
           <div className="line"></div>
-          <p>
-            We offer the best services ever that you can find in the market.
-            <br />
-            Here are some reasons why you should choose us.
-          </p>
-          <Link to="/benefits">
-            <button>Learn More</button>
-          </Link>
         </div>
-        {/* <hr /> */}
       </main>
+      <div className="reasons-container container-fluid">
+        <h1 className="mx-5">Why using our platform?</h1>
+        <div className="line"></div>
+        <WhyChooseUs
+          style={{
+            width: "100%",
+            borderTopLeftRadius: "50%",
+            borderBottomRightRadius: "50%",
+            padding: "10px",
+          }}
+        />
+
+        <Link to="/benefits">
+          <button>Learn More</button>
+        </Link>
+      </div>
+
       <Footer />
     </>
   );

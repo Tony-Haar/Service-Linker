@@ -1,4 +1,32 @@
+.logo {
+  width: 50px;
+  height: auto;
+}
 
+.home-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.card-body-header {
+  margin-bottom: 20px;
+}
+
+.card-body-footer {
+  margin-top: 20px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
+
+/* 
 .registration-form-container{
   width: 100%;
   flex-direction: column;
@@ -85,7 +113,6 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* resize: none; */
 }
 
 .card-body-content .input-group select {
@@ -132,4 +159,4 @@
 
 .card-image {
   display: none;
-}
+} */
