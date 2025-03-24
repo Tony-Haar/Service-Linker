@@ -186,6 +186,8 @@ export const professionals = {
       experience: "10 years",
       rating: 4.8,
       contact: "123-456-7890",
+      about: "Skilled carpenter with 10 years of experience specializing in custom furniture, cabinetry, and woodwork. Passionate about quality craftsmanship and attention to detail.",
+      expertise: ["Custom furniture", "Cabinetry", "Woodwork", "Flooring installation", "Door & window framing"]
     },
     {
       id: 2,
@@ -194,6 +196,8 @@ export const professionals = {
       experience: "8 years",
       rating: 4.5,
       contact: "987-654-3210",
+      about: "Experienced carpenter known for precise measurements and high-quality woodwork. Specializes in residential renovations and custom designs.",
+      expertise: ["Structural carpentry", "Custom home building", "Framework installation", "Staircase construction", "Wall paneling"]
     },
     {
       id: 3,
@@ -202,6 +206,8 @@ export const professionals = {
       experience: "12 years",
       rating: 4.9,
       contact: "555-678-1234",
+      about: "Expert in structural carpentry and custom home building, delivering durable and aesthetically pleasing woodwork solutions.",
+      expertise: ["Residential renovations", "Custom designs", "Deck building", "Roof framing", "Trim work"]
     },
   ],
   Electrical: [
@@ -212,8 +218,9 @@ export const professionals = {
       experience: "12 years",
       rating: 4.9,
       contact: "555-678-1234",
+      about: "Certified electrician with expertise in wiring, circuit troubleshooting, and smart home installations. Ensuring safe and efficient electrical systems.",
+      expertise: ["Wiring", "Circuit troubleshooting", "Smart home installations", "Electrical panel upgrades", "Safety inspections"]
     },
-
     {
       id: 5,
       image: electrician2,
@@ -221,6 +228,8 @@ export const professionals = {
       experience: "7 years",
       rating: 4.6,
       contact: "444-333-2222",
+      about: "Reliable electrician skilled in electrical panel upgrades, lighting solutions, and energy-efficient installations.",
+      expertise: ["Electrical panel upgrades", "Lighting solutions", "Energy-efficient installations", "Emergency repairs", "Commercial wiring"]
     },
     {
       id: 6,
@@ -229,6 +238,8 @@ export const professionals = {
       experience: "9 years",
       rating: 4.7,
       contact: "222-111-0000",
+      about: "Experienced and certified electrician with expertise in residential and commercial electrical systems. Committed to safety and quality service.",
+      expertise: ["Residential electrical systems", "Commercial electrical systems", "Generator installations", "Surge protection", "Electrical troubleshooting"]
     },
     {
       id: 7,
@@ -237,6 +248,8 @@ export const professionals = {
       experience: "6 years",
       rating: 4.4,
       contact: "666-555-4444",
+      about: "Expert in troubleshooting electrical issues and installing energy-efficient solutions for homes and businesses.",
+      expertise: ["Troubleshooting electrical issues", "Energy-efficient solutions", "Electrical wiring", "Solar panel installations", "Outdoor lighting"]
     },
   ],
   Plumbing: [
@@ -247,6 +260,8 @@ export const professionals = {
       experience: "7 years",
       rating: 4.6,
       contact: "444-333-2222",
+      about: "Dedicated plumber specializing in leak repairs, pipe installations, and water heater maintenance with a focus on long-lasting solutions.",
+      expertise: ["Leak repairs", "Pipe installations", "Water heater maintenance", "Drain cleaning", "Fixture replacements"]
     },
     {
       id: 9,
@@ -255,6 +270,8 @@ export const professionals = {
       experience: "15 years",
       rating: 4.9,
       contact: "999-888-7777",
+      about: "Experienced and certified plumber with over 15 years in the plumbing industry, specializing in residential and commercial plumbing systems. Adept at installing, repairing, and maintaining a wide variety of plumbing fixtures and systems. Recognized for excellent problem-solving skills and a commitment to customer satisfaction.",
+      expertise: ["Residential plumbing", "Commercial plumbing", "Sewer line repairs", "Pipe insulation", "Bathroom renovations"]
     },
     {
       id: 10,
@@ -263,6 +280,8 @@ export const professionals = {
       experience: "11 years",
       rating: 4.8,
       contact: "111-222-3333",
+      about: "Expert plumber specializing in eco-friendly plumbing solutions, pipe repairs, and drainage system optimization.",
+      expertise: ["Eco-friendly plumbing", "pipe repairs", "drainage optimization"]
     },
     {
       id: 11,
@@ -271,6 +290,8 @@ export const professionals = {
       experience: "15 years",
       rating: 4.9,
       contact: "999-888-7777",
+      about: "Highly skilled in residential and commercial plumbing with a focus on advanced water systems and efficient repair techniques.",
+      expertise: ["Residential and commercial plumbing", "advanced water systems", "efficient repairs"]
     },
   ],
   Sanitation: [
@@ -281,6 +302,8 @@ export const professionals = {
       experience: "15 years",
       rating: 4.9,
       contact: "999-888-7777",
+      about: "Bob is a sanitation expert with extensive experience in waste management and hygiene solutions for residential and commercial spaces.",
+      expertise: ["Waste management", "hygiene solutions"]
     },
     {
       id: 13,
@@ -289,6 +312,8 @@ export const professionals = {
       experience: "11 years",
       rating: 4.8,
       contact: "111-222-3333",
+      about: "Sophia specializes in eco-friendly sanitation methods, ensuring a clean and sustainable environment for homes and businesses.",
+      expertise: ["Thorough sanitation", "hygiene maintenance"]
     },
     {
       id: 14,
@@ -297,6 +322,8 @@ export const professionals = {
       experience: "9 years",
       rating: 4.7,
       contact: "222-111-0000",
+      about: "Tommy is known for his efficient and thorough sanitation services, helping clients maintain top-tier hygiene standards.",
+      expertise: ["Eco-friendly sanitation", "sustainable cleaning solutions"]
     },
   ],
   Painting: [
@@ -307,6 +334,8 @@ export const professionals = {
       experience: "6 years",
       rating: 4.4,
       contact: "666-555-4444",
+      about: "Emma is a passionate painter specializing in both residential and commercial projects, delivering vibrant and lasting results.",
+      expertise: ["Residential and commercial painting", "vibrant finishes"]
     },
     {
       id: 16,
@@ -315,6 +344,8 @@ export const professionals = {
       experience: "7 years",
       rating: 4.6,
       contact: "444-333-2222",
+      about: "Alice has a keen eye for detail and color coordination, making her a go-to expert for interior and exterior painting jobs.",
+      expertise: ["Interior and exterior painting", "color coordination"]
     },
     {
       id: 17,
@@ -323,6 +354,8 @@ export const professionals = {
       experience: "9 years",
       rating: 4.7,
       contact: "222-111-0000",
+      about: "Bob combines creativity with technical expertise, ensuring flawless painting finishes that enhance any space.",
+      expertise: ["Creative painting", "technical finishing"]
     },
     {
       id: 18,
@@ -331,6 +364,8 @@ export const professionals = {
       experience: "6 years",
       rating: 4.4,
       contact: "666-555-4444",
+      about: "Emma is dedicated to bringing walls to life with her professional touch, ensuring high-quality finishes in every project.",
+      expertise: ["Wall painting", "high-quality finishes"]
     },
   ],
   Roofing: [
@@ -341,6 +376,8 @@ export const professionals = {
       experience: "15 years",
       rating: 4.9,
       contact: "999-888-7777",
+      about: "Michael is a roofing specialist with expertise in installing and maintaining durable roofing systems for all types of buildings.",
+      expertise: ["Roof installation", "durable roofing systems"]
     },
     {
       id: 20,
@@ -349,6 +386,8 @@ export const professionals = {
       experience: "11 years",
       rating: 4.8,
       contact: "111-222-3333",
+      about: "Sophia is known for her precision and reliability in roofing installations, ensuring top-notch quality and weather resistance.",
+      expertise: ["Precision roofing", "weather-resistant installations"]
     },
     {
       id: 21,
@@ -357,6 +396,8 @@ export const professionals = {
       experience: "9 years",
       rating: 4.7,
       contact: "222-111-0000",
+      about: "Tommy specializes in both residential and commercial roofing, offering expert solutions for long-lasting protection.",
+      expertise: ["Residential and commercial roofing", "long-lasting protection"]
     },
     {
       id: 22,
@@ -365,6 +406,8 @@ export const professionals = {
       experience: "6 years",
       rating: 4.4,
       contact: "666-555-4444",
+      about: "Emma is a skilled roofer with a strong commitment to quality workmanship and customer satisfaction.",
+      expertise: ["Quality roofing", "customer satisfaction"]
     },
   ],
   Mechanical: [
@@ -375,6 +418,8 @@ export const professionals = {
       experience: "11 years",
       rating: 4.8,
       contact: "111-222-3333",
+      about: "Sophia is a certified mechanic with extensive experience in diagnosing and repairing a wide range of mechanical systems.",
+      expertise: ["Diagnostics", "mechanical repairs"]
     },
     {
       id: 24,
@@ -383,6 +428,8 @@ export const professionals = {
       experience: "9 years",
       rating: 4.7,
       contact: "222-111-0000",
+      about: "Tommy is a mechanical expert who excels in troubleshooting and fixing complex automotive and industrial machinery issues.",
+      expertise: ["Troubleshooting", "automotive repairs", "industrial machinery"]
     },
     {
       id: 25,
@@ -391,6 +438,8 @@ export const professionals = {
       experience: "6 years",
       rating: 4.4,
       contact: "666-555-4444",
+      about: "Emma has a deep understanding of mechanical systems, ensuring high-quality service and maintenance for all types of equipment.",
+      expertise: ["Mechanical systems", "equipment maintenance"]
     },
     {
       id: 26,
@@ -399,9 +448,12 @@ export const professionals = {
       experience: "15 years",
       rating: 4.9,
       contact: "999-888-7777",
+      about: "Michael is a highly experienced mechanic known for his ability to repair and maintain machinery with precision and efficiency.",
+      expertise: ["Machinery repair", "efficient maintenance"]
     },
   ],
 };
+
 
 export const professionalDetails = {
   mechanic: [

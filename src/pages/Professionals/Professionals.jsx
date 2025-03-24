@@ -45,8 +45,17 @@ const Professionals = ({ isLoggedIn, username }) => {
     ));
   }
 
-  const handleCardClick = () => {
-    navigate("/pro-profile");
+  const handleCardClick = (pro) => {
+    navigate("/pro-profile", {
+      state: {
+        name: pro.name,
+        experience: pro.experience,
+        service: service,
+        image: pro.image,
+        about: pro.about,
+        contact: pro.contact,
+        expertise: pro.expertise
+    }});
   };
 
   return (
@@ -73,7 +82,7 @@ const Professionals = ({ isLoggedIn, username }) => {
         <Row>
           {professionals[selectedService].map((pro) => (
             <Col md={4} key={pro.id} className="mb-4">
-              <Card className="shadow-sm" onClick={() => handleCardClick()}>
+              <Card className="shadow-sm" onClick={() => handleCardClick(pro)}>
                 <Card.Img
                   variant="top"
                   src={pro.image}

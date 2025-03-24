@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+
+import { useLocation, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faPhone, faLink } from "@fortawesome/free-solid-svg-icons";
 
 import "./professionalProfilePage.css";
 import Profile from "../../assets/profile.jpeg";
@@ -11,7 +13,23 @@ import Plumbing from "../../assets/plumbing.png";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
+
+
 function ProfessionalProfilePage() {
+  const location = useLocation();
+  const {name, experience, service, image, about, contact, expertise} = location.state || {}
+
+  const [showModal, setShowModal] = useState(false);
+
+
+  const expertiseElement = expertise.map((skill) => ( 
+    <p className="expertise">{skill}</p>
+  ))
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="professional-profile-page-container">
       <header>
@@ -20,33 +38,29 @@ function ProfessionalProfilePage() {
       <main className="main-container">
         <h1>
           I will help you out with everything <br />
-          plumbing
+          related to {service}
         </h1>
         <div className="main-inner-container">
           <div className="professional-details-container">
             <section className="professional-details-inner-container">
-              <img src={Profile} alt="professional image" />
+              <img src={image} alt="professional image" />
               <div className="professional-info">
-                <h5>Yvan Kwame</h5>
-                <p>20 Repairs</p>
+                <h5 style = {{marginBottom: "0", paddingBottom: "0"}}>{name}</h5>
+                <p style = {{marginBottom: "0", paddingBottom: "0"}}>{experience} of experience</p>
                 <div className="professional-info-rating">
                   <FontAwesomeIcon icon={faStar} />
-                  <p>4.8</p>
+                  <p style = {{marginBottom: "0", paddingBottom: "0"}}>4.8</p>
                 </div>
               </div>
             </section>
 
             <p className="about-professional">
-              Experienced and certified plumber with over 15 years in the
-              plumbing industry, specializing in residential and commercial
-              plumbing systems. Adept at installing, repairing, and maintaining
-              a wide variety of plumbing fixtures and systems. Recognized for
-              excellent problem-solving skills and a commitment to customer
-              satisfaction.
+              {about}
             </p>
 
             <section className="professional-expertise-container">
-              <p className="expertise">
+              {expertiseElement}
+              {/* <p className="expertise">
                 Installing and repairing faucets, sinks, showers, and bathtubs
               </p>
               <p className="expertise">
@@ -54,7 +68,7 @@ function ProfessionalProfilePage() {
               </p>
               <p className="expertise">Upgrading to water-saving fixtures</p>
               <p className="expertise">Installing new plumbing fixtures</p>
-              <p className="expertise">Sewer line repair and replacement</p>
+              <p className="expertise">Sewer line repair and replacement</p> */}
             </section>
 
             <section className="review-section">
@@ -85,41 +99,88 @@ function ProfessionalProfilePage() {
               </div>
             </section>
 
-            <section className="portfolio-section">
+            {/* <section className="portfolio-section">
               <h3>Portfolio</h3>
               <div className="portfolio-images-container">
                 <img src={Plumbing} alt="professional image" />
                 <img src={Mechanic} alt="professional image" />
                 <img src={Paint} alt="professional image" />
               </div>
-            </section>
+            </section> */}
           </div>
 
-          <div className="messages-container">
-            <h3>Messaging</h3>
-            <div className="message-display-container">
-              <div className="message-display-inner-container">
-                <p className="pro-message">
-                  At which time the would like the fix?
-                </p>
-                <p className="user-message">
-                  As i told you my sink right now need to be <br />
-                  fix and in the bathroom there are some job to be done.
-                </p>
-                <p className="pro-message">
-                  Alright sorry for any inconvenience of misunderstanding
-                </p>
-                <p className="pro-message">Can i have some picture ?</p>
-                <p className="user-message">please, give me one second</p>
-              </div>
-              <form>
-                <textarea />
-                <div>
-                  <button type="submit">SEND</button>
-                </div>
-              </form>
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            gap: "20px"
+          }}>
+            <div>
+              <button
+                  style = {{
+                    padding: "10px 70px",
+                    borderRadius: ".5rem",
+                    color: "white",
+                    backgroundColor: "black"
+                  }}
+                  onClick={() => {setShowModal(true)}}
+                >
+                  C O N T A C T - M E
+              </button>
             </div>
+            <dir style = {{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+              width: "270px"
+            }}>
+              <p><FontAwesomeIcon icon={faPhone} style = {{paddingRight: "10px"}}/>{contact}</p>
+              <a href = ""><FontAwesomeIcon icon={faLink} style = {{paddingRight: "10px"}}/>@{name}</a>
+            </dir>
           </div>
+
+          {showModal && (
+              <div
+                className="modal fade show"
+                style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+                tabIndex="-1"
+              >
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <img src = {image} alt="" style = {{height: "40px", width: "40px", borderRadius: "100%"}}/>
+                      <h5 className="modal-title" style = {{paddingLeft: "10px"}}>Message {name}</h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        onClick={closeModal}
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <form action="">
+                        <textarea name="" id="" style = {{resize: "none", width: "100%", padding: "10px"}} placeholder = {`send ${name} a message to exchange`}></textarea>
+                      </form>
+                    </div>
+                    <div className="modal-footer">
+                      {/* <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={closeModal}
+                      >
+                        Close
+                      </button> */}
+                      <Link to="/user-chat">
+                        <button type="button" className="btn btn-primary">
+                          Send message
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
         </div>
       </main>
 
