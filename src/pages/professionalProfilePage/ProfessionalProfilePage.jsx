@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faPhone, faLink } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,11 +15,13 @@ import Footer from "../../components/Footer";
 
 
 
-function ProfessionalProfilePage() {
+function ProfessionalProfilePage({isLoggedIn, username}) {
+  const navigate = useNavigate();
   const location = useLocation();
-  const {name, experience, service, image, about, contact, expertise} = location.state || {}
+  const {name, email, experience, service, image, about, contact, expertise} = location.state || {}
 
   const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
 
 
   const expertiseElement = expertise.map((skill) => ( 
@@ -29,6 +31,36 @@ function ProfessionalProfilePage() {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const propositionBtnClick = (proposition) => {
+    setMessage(proposition);
+  }
+
+  const propositions = [
+    "👋 Hey {name} A, can you help me with ",
+    "Need you it's urgent, are you available?",
+    `can you fix anything related to ${service}?`
+  ]
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(isLoggedIn) {
+      const messages = JSON.parse(localStorage.getItem("messages")) || [];
+      console.log(username, name, message);
+      const newMessage = {
+        sender: username,
+        receiver: email,
+        message: message,
+      };
+      messages.push(newMessage);
+      localStorage.setItem("messages", JSON.stringify(messages));
+      closeModal();
+      console.log(messages);
+      alert(`message send to ${name}`)
+    } else {
+      alert(`You should log in first`);
+    }
+  }
 
   return (
     <div className="professional-profile-page-container">
@@ -159,8 +191,67 @@ function ProfessionalProfilePage() {
                       ></button>
                     </div>
                     <div className="modal-body">
-                      <form action="">
-                        <textarea name="" id="" style = {{resize: "none", width: "100%", padding: "10px"}} placeholder = {`send ${name} a message to exchange`}></textarea>
+                      <form action="" onSubmit = {(e) => handleSubmit(e)}>
+                        <textarea 
+                          name="message" 
+                          id="" 
+                          rows = "4" 
+                          style = {{
+                            resize: "none", 
+                            width: "100%", 
+                            padding: "10px"
+                          }} 
+                          value = {message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          placeholder = {`send ${name} a message to exchange`}></textarea>
+                      
+                        <button 
+                          type="button"
+                          style = {{
+                            padding: "5px",
+                            borderRadius: ".5rem",
+                            border: "none",
+                            marginBottom: "5px",
+                            cursor: "pointer"
+                          }}
+                          onClick = {() => propositionBtnClick(propositions[0])}
+                        >
+                          👋 Hey {name} A, can you help me with 
+                        </button>
+                        <button 
+                          type="button"
+                          style = {{
+                            padding: "5px",
+                            borderRadius: ".5rem",
+                            border: "none",
+                            marginBottom: "5px",
+                            cursor: "pointer"
+                          }}
+                          onClick = {() => propositionBtnClick(propositions[1])}
+                        >
+                          Need you it's urgent, are you available? 
+                        </button>
+                        <button 
+                          type="button"
+                          style = {{
+                            padding: "5px",
+                            borderRadius: ".5rem",
+                            border: "none",
+                            marginBottom: "5px",
+                            cursor: "pointer"
+                          }}
+                          onClick = {() => propositionBtnClick(propositions[2])}
+                        >
+                          can you fix anything related to {service}?
+                        </button>
+                        <div>
+                          <button 
+                            type= "submit" 
+                            className="btn btn-primary"
+                          >
+                            Send message
+                          </button>
+                        </div>
                       </form>
                     </div>
                     <div className="modal-footer">
@@ -171,11 +262,6 @@ function ProfessionalProfilePage() {
                       >
                         Close
                       </button> */}
-                      <Link to="/user-chat">
-                        <button type="button" className="btn btn-primary">
-                          Send message
-                        </button>
-                      </Link>
                     </div>
                   </div>
                 </div>

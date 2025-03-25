@@ -6,8 +6,10 @@ import Footer from "../../components/Footer";
 
 
 
-function ExchangePage() {
+function ExchangePage({ isLoggedIn, user, userType, messages }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [message_, setMessage_] = useState("");
+  const [intendedReceiver, setIntendedReceiver] = useState("");
 
   const handleMouseEnter = (index) => setHoveredIndex(index);
   const handleMouseLeave = () => setHoveredIndex(null); 
@@ -23,17 +25,78 @@ function ExchangePage() {
     transition: "transform 0.3s ease",
   });
 
-  const messages = [
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-    "From Ken - plumber",
-  ]; 
+  let userMessages = [];
+  if(isLoggedIn && user !== "") {
+    if(userType === "provider") {
+      userMessages = messages.filter((message) => message.receiver === user);
+    }else {
+      userMessages = messages.filter((message) => message.sender === user);
+    }  
+  }else {
+    userMessages = [];
+  }
+
+  const MessageCount = () => {
+    let read = userMessages.length
+    if(read > 8) {
+      read = Math.floor(read / 2) + Math.floor( Math.floor(read / 2) / 2);
+    }
+    return read;
+  }
+  const readMessagesCount = MessageCount();
+  const unReadMessagesCount = userMessages.length - readMessagesCount;
+
+  const [exchanges, setExchanges] = useState([]);
+
+  const handleClick = (sender, receiver) => {
+    const filteredMessages = messages.filter((message) => {
+      const validPersons = [sender, receiver];
+      return validPersons.includes(message.sender) && validPersons.includes(message.receiver);
+    });
+    setExchanges(filteredMessages);
+    if(userType === "provider") {
+      setIntendedReceiver(sender);
+    }else {
+      setIntendedReceiver(receiver);
+    }
+  };
+
+  const ExchangeElement = exchanges.map((element, index) => (
+    <div
+      key = {index}
+      style={{
+        textDecoration: "none",
+        color: "black",
+        border: "1px solid gray",
+        borderRadius: ".25rem",
+        padding: "10px",
+        cursor: "pointer",
+      }} 
+    >
+      <h6 style={{ color: "#0c5cd4" }}>From {element.sender}</h6>
+      <p style={{ marginBottom: "0px" }}>
+        {element.message}
+      </p>
+    </div>
+  ));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(isLoggedIn) {
+      const messages = JSON.parse(localStorage.getItem("messages")) || [];
+      const newMessage = {
+        sender: user,
+        receiver: intendedReceiver,
+        message: message_,
+      };
+      messages.push(newMessage);
+      localStorage.setItem("messages", JSON.stringify(messages));
+      alert(`message send to ${intendedReceiver}`)
+    } else {
+      alert(`Error: message not send`);
+    }
+  }
+    
 
   return (
     <>
@@ -53,7 +116,7 @@ function ExchangePage() {
               alignItems: "center",
               color: "white"
             }}>
-              10
+              {userMessages.length}
             </div>
             <p style = {{marginBottom: "0"}}>Messages</p>
           </div>
@@ -68,7 +131,7 @@ function ExchangePage() {
               alignItems: "center",
               color: "white"
             }}>
-              6
+              {unReadMessagesCount}
             </div>
             <p style = {{marginBottom: "0"}}>Unread</p>
           </div>
@@ -83,7 +146,7 @@ function ExchangePage() {
               alignItems: "center",
               color: "white"
             }}>
-              4
+              {readMessagesCount}
             </div>
             <p style = {{marginBottom: "0"}}>Read</p>
           </div>
@@ -106,16 +169,17 @@ function ExchangePage() {
               marginTop: "20px",
             }}
           >
-            {messages.map((message, index) => (
+            {userMessages.map((message, index) => (
               <div
                 key={index} 
                 onMouseEnter={() => handleMouseEnter(index)} 
                 onMouseLeave={handleMouseLeave} 
                 style={itemStyle(index)} 
+                onClick = {() => handleClick(message.sender, message.receiver)}
               >
-                <h6 style={{ color: "#0c5cd4" }}>{message}</h6>
+                <h6 style={{ color: "#0c5cd4" }}>From {message.sender}</h6>
                 <p style={{ marginBottom: "0px" }}>
-                  Good morning, i saw your request. It is still on the table?
+                  {message.message}
                 </p>
               </div>
             ))}
@@ -140,10 +204,16 @@ function ExchangePage() {
               padding: "10px",
             }}
           >
-            message display box
+            {isLoggedIn && ExchangeElement}
           </div>
-          <form action="" style={{ width: "100%", height: "35%", paddingTop: "20px" }}>
-            <textarea name="" id="" rows="4" style={{ width: "100%", resize: "none", padding: "10px" }}></textarea>
+          <form action="" style={{ width: "100%", height: "35%", paddingTop: "20px" }} onSubmit={handleSubmit}>
+            <textarea 
+              name="message_" 
+              id="" rows="4" 
+              style={{ width: "100%", resize: "none", padding: "10px" }}
+              value = {message_}
+              onChange={(e) => setMessage_(e.target.value)}
+            ></textarea>
             <input
               type="submit"
               value="Send"

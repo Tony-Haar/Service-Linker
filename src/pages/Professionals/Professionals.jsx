@@ -49,6 +49,7 @@ const Professionals = ({ isLoggedIn, username }) => {
     navigate("/pro-profile", {
       state: {
         name: pro.name,
+        email: pro.email,
         experience: pro.experience,
         service: service,
         image: pro.image,
