@@ -68,7 +68,7 @@ function LandingPage({ isLoggedIn, username }) {
 
   return (
     <>
-      <header className="mt-3 mx-0 header-hero">
+      <header className="mt-3 mx-0 header-hero container-fluid">
         <div className="container py-4">
           <div className="row align-items-center">
             <div className="col-lg-6 fs-4">
@@ -113,7 +113,6 @@ function LandingPage({ isLoggedIn, username }) {
         </div>
       </header>
 
-      {/* Modal */}
       {showModal && (
         <div
           className="modal fade show"

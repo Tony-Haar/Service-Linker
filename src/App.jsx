@@ -16,13 +16,9 @@ import RegistrationForm from "./pages/registrationForm/RegistrationForm";
 import OrderProfessional from "./pages/OrderProfessional/OrderProfessional";
 import ServicesPage from "./pages/servicePage/ServicesPage";
 import Professionals from "./pages/Professionals/Professionals";
-import ProfessionalRegistration from "./pages/ProfessionalRegistration/ProfessionalRegistration";
 import ProInformation from "./components/ProInformation";
 import RequestPage from "./pages/requestsPage/requestsPage";
 import ExchangePage from "./pages/exchangePage/ExchangePage";
-//import ProfessionalChats from "./pages/professionalChats/ProfessionalChats";
-//import UserChats from "./pages/UserChats/UserChats";
-import BookingPage from "./pages/BookingPage/BookingPage";
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,14 +45,6 @@ function AppContent() {
     "/auth/signup",
     "/registration-form",
   ];
-
-
-  /* const [messages, setMessages] = useState([]);
-
-  const sendMessage = (sender, text) => {
-    setMessages([...messages, { text, sender }]);
-  }; */
-
 
   const messages = JSON.parse(localStorage.getItem("messages")) || [];
 
@@ -96,7 +84,7 @@ function AppContent() {
           element={<DomainServiceDetailPage />}
         />
         <Route path="/find-pro" element={<FindProfessionalPage />} />
-        <Route path="/pro-profile" element={<ProfessionalProfilePage isLoggedIn={isLoggedIn} username={username}/>} />
+
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/registration-form" element={<RegistrationForm />} />
         <Route path="/pro-information" element={<ProInformation />} />
@@ -107,23 +95,27 @@ function AppContent() {
             <Professionals isLoggedIn={isLoggedIn} username={username} />
           }
         />
-        <Route path="/profile" element={<ProfessionalProfilePage />} />
-        <Route path="/exchanges" element={<ExchangePage isLoggedIn = {isLoggedIn} user = {username} userType={userType} messages = {messages}/>} />
-        <Route path="/call" element={<OrderProfessional />} />
-
-        {/* .......................... */}
-        <Route path="/booking" element={<BookingPage />} />
-        {/* <Route
-          path="/user-chat"
-          element={<UserChats messages={messages} sendMessage={sendMessage} />}
-        /> */}
-        {/* <Route
-          path="/professional-chat"
+        <Route
+          path="/exchanges"
           element={
-            <ProfessionalChats messages={messages} sendMessage={sendMessage} />
+            <ExchangePage
+              isLoggedIn={isLoggedIn}
+              user={username}
+              userType={userType}
+              messages={messages}
+            />
           }
-        /> */}
-        {/* ........................... */}
+        />
+        <Route path="/call" element={<OrderProfessional />} />
+        <Route
+          path="/pro-profile"
+          element={
+            <ProfessionalProfilePage
+              isLoggedIn={isLoggedIn}
+              username={username}
+            />
+          }
+        />
       </Routes>
     </>
   );

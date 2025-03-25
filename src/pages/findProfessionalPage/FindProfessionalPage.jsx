@@ -38,7 +38,6 @@ export default function FindProfessionalPage() {
     </Button>
   ));
 
-  // Filter professionals who are within the range and calculate distances
   const professionalsInRange = ProfessionalPositionData.filter((professional) =>
     isWithinRange(
       professional.position_coordinates,
@@ -54,7 +53,6 @@ export default function FindProfessionalPage() {
     ),
   }));
 
-  // Sort professionals by distance
   professionalsInRange.sort((a, b) => a.distance - b.distance);
 
   const proPositionElements = professionalsInRange.map((position, index) => (
@@ -73,9 +71,7 @@ export default function FindProfessionalPage() {
 
   return (
     <div className="find-pro-container">
-      <header>
-        {/* <Navbar /> */}
-      </header>
+      <header></header>
 
       <main>
         <h1>Amazing! Here we go! the nearest Professionals</h1>
