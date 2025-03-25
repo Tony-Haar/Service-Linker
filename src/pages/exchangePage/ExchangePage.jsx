@@ -1,139 +1,166 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Footer from "../../components/Footer";
 
 
 
 function ExchangePage() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
-    const itemStyle = {
-        textDecoration: "none",
-        color: "black",
-    };
+  const handleMouseEnter = (index) => setHoveredIndex(index);
+  const handleMouseLeave = () => setHoveredIndex(null); 
 
-    return (
-      <>
-        <h3 style={{ padding: "50px 0 0 50px" }}>Chat</h3>
-        <p style={{ paddingLeft: "50px" }}>
-          communicate with professionals and clients here
-        </p>
+  const itemStyle = (index) => ({
+    textDecoration: "none",
+    color: "black",
+    border: "1px solid gray",
+    borderRadius: ".25rem",
+    padding: "10px",
+    cursor: "pointer",
+    transform: hoveredIndex === index ? "scale(1.05)" : "scale(1)", 
+    transition: "transform 0.3s ease",
+  });
+
+  const messages = [
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+    "From Ken - plumber",
+  ]; 
+
+  return (
+    <>
+      <h3 style={{ padding: "50px 0 0 50px" }}>Chat</h3>
+      <p style={{ paddingLeft: "50px" }}>
+        communicate with professionals and clients here
+      </p>
+      <div style = {{display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "20px", marginLeft: "50px"}}>
+          <div style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "10px"}}>
+            <div style = {{
+              height: "28px", 
+              backgroundColor: "#0c5cd4", 
+              width: "28px", 
+              borderRadius: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "white"
+            }}>
+              10
+            </div>
+            <p style = {{marginBottom: "0"}}>Messages</p>
+          </div>
+          <div style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "10px"}}>
+            <div style = {{
+              height: "28px", 
+              backgroundColor: "#0c5cd4", 
+              width: "28px", 
+              borderRadius: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "white"
+            }}>
+              6
+            </div>
+            <p style = {{marginBottom: "0"}}>Unread</p>
+          </div>
+          <div style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "10px"}}>
+            <div style = {{
+              height: "28px", 
+              backgroundColor: "#0c5cd4", 
+              width: "28px", 
+              borderRadius: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "white"
+            }}>
+              4
+            </div>
+            <p style = {{marginBottom: "0"}}>Read</p>
+          </div>
+        </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          marginBottom: "50px",
+        }}
+      >
+        <div>
+          <div
+            style={{
+              background: "",
+              width: "100%",
+              height: "600px",
+              padding: "0 0 50px 50px",
+              overflowY: "auto",
+              marginTop: "20px",
+            }}
+          >
+            {messages.map((message, index) => (
+              <div
+                key={index} 
+                onMouseEnter={() => handleMouseEnter(index)} 
+                onMouseLeave={handleMouseLeave} 
+                style={itemStyle(index)} 
+              >
+                <h6 style={{ color: "#0c5cd4" }}>{message}</h6>
+                <p style={{ marginBottom: "0px" }}>
+                  Good morning, i saw your request. It is still on the table?
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            marginBottom: "50px",
+            width: "85%",
+            height: "auto",
+            background: "",
+            margin: "20px 50px 0 50px",
+            marginRight: "50px",
           }}
         >
-          <div>
-            <div
-              style={{
-                background: "",
-                width: "100%",
-                height: "auto",
-                padding: "50px 0 50px 50px",
-              }}
-            >
-              <Link style={itemStyle}>
-                <h6>From Ken - plumber</h6>
-                <p>
-                  Good morning, i saw your request. It is still on the table?
-                </p>
-                <div
-                  style={{
-                    width: "80%",
-                    height: "1px",
-                    backgroundColor: "gray",
-                    marginBottom: "15px",
-                  }}
-                ></div>
-              </Link>
-              <Link style={itemStyle}>
-                <h6>From Ken - plumber</h6>
-                <p>
-                  Good morning, i saw your request. It is still on the table?
-                </p>
-                <div
-                  style={{
-                    width: "80%",
-                    height: "1px",
-                    backgroundColor: "gray",
-                    marginBottom: "15px",
-                  }}
-                ></div>
-              </Link>
-              <Link style={itemStyle}>
-                <h6>From Ken - plumber</h6>
-                <p>
-                  Good morning, i saw your request. It is still on the table?
-                </p>
-                <div
-                  style={{
-                    width: "80%",
-                    height: "1px",
-                    backgroundColor: "gray",
-                    marginBottom: "15px",
-                  }}
-                ></div>
-              </Link>
-              <Link style={itemStyle}>
-                <h6>From Ken - plumber</h6>
-                <p>
-                  Good morning, i saw your request. It is still on the table?
-                </p>
-                <div
-                  style={{
-                    width: "80%",
-                    height: "1px",
-                    backgroundColor: "gray",
-                    marginBottom: "15px",
-                  }}
-                ></div>
-              </Link>
-            </div>
-          </div>
-
           <div
             style={{
-              width: "100%",
-              padding: "50px 50px 0 0",
-              height: "auto",
-              background: "",
+              height: "65%",
+              overflowY: "auto",
+              border: "2px solid #0c5cd4",
+              borderRadius: ".25rem",
+              padding: "10px",
             }}
           >
-            <div className="message-display-container">
-              <div className="message-display-inner-container">
-                <p className="pro-message">
-                  At which time the would like the fix?
-                </p>
-                <p className="user-message">
-                  As i told you my sink right now need to be <br />
-                  fix and in the bathroom there are some job to be done.
-                </p>
-                <p className="pro-message">
-                  Alright sorry for any inconvenience of misunderstanding
-                </p>
-                <p className="pro-message">Can i have some picture ?</p>
-                <p className="user-message">please, give me one second</p>
-              </div>
-              <form style={{ marginTop: "20px" }}>
-                <textarea
-                  style={{
-                    resize: "none",
-                    width: "100%",
-                    height: "70%",
-                  }}
-                />
-                <Button>Send</Button>
-              </form>
-            </div>
+            message display box
           </div>
+          <form action="" style={{ width: "100%", height: "35%", paddingTop: "20px" }}>
+            <textarea name="" id="" rows="4" style={{ width: "100%", resize: "none", padding: "10px" }}></textarea>
+            <input
+              type="submit"
+              value="Send"
+              style={{
+                padding: "8px 40px",
+                backgroundColor: "#0c5cd4",
+                cursor: "pointer",
+                color: "white",
+                border: "1px solid #0c5cd4",
+              }}
+            />
+          </form>
         </div>
-        <Footer />
-      </>
-    );
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default ExchangePage;
