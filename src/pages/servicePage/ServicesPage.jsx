@@ -23,18 +23,6 @@ const ServicesPage = () => {
         <Row>
           {services.map((service) => (
             <Col md={4} key={service.id} className="mb-4">
-              {/* <Link
-                to="/professionals"
-                className=""
-                onClick={() => {
-                  navigate("/professionals", {
-                    state: {
-                      service: service.name,
-                    },
-                  });
-                  console.log(service.name);
-                }}
-              > */}
               <Card
                 className="shadow-sm"
                 onClick={() => handleCardClick(service)}
@@ -52,15 +40,8 @@ const ServicesPage = () => {
                 <Card.Body>
                   <Card.Title>{service.name}</Card.Title>
                   <Card.Text>{service.description}</Card.Text>
-                  {/* <Button
-                      variant="primary"
-                      onClick={() => handleBookNow(service)}
-                    >
-                      Book Now
-                    </Button> */}
                 </Card.Body>
               </Card>
-              {/* </Link> */}
             </Col>
           ))}
         </Row>

@@ -19,6 +19,7 @@ import Professionals from "./pages/Professionals/Professionals";
 import ProInformation from "./components/ProInformation";
 import RequestPage from "./pages/requestsPage/requestsPage";
 import ExchangePage from "./pages/exchangePage/ExchangePage";
+import PartnersPage from "./pages/partnersPage/PartnersPage";
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -116,6 +117,7 @@ function AppContent() {
             />
           }
         />
+        <Route path="/partners" element={<PartnersPage />} />
       </Routes>
     </>
   );

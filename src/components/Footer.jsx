@@ -27,11 +27,6 @@ const Footer = () => {
       <h3 className="text-center py-4">
         &copy; <span>FIXit</span>, ALL RIGHTS RESERVED
       </h3>
-
-      {/* <hr
-        className="bg-warning border-0"
-        style={{ height: "10px", width: "100%" }}
-      /> */}
     </footer>
   );
 };

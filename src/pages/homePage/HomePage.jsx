@@ -52,7 +52,7 @@ function HomePage() {
       <header>
         <div className="header-hero home-hero">
           <div>
-            <h1>Welcome To Service-Linker</h1>
+            <h1>Welcome To Fix-It</h1>
             <p>
               Connecting you with qualified professionals for quick assistance.
             </p>
