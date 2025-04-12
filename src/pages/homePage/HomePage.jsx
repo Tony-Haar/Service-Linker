@@ -48,31 +48,43 @@ function HomePage() {
   ));
 
   return (
-    <div className="home-page-container container-fluid">
-      <header>
-        <div className="header-hero home-hero">
-          <div>
-            <h1>Welcome To Fix-It</h1>
-            <p>
-              Connecting you with qualified professionals for quick assistance.
-            </p>
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                navigate("/professionals", {
-                  state: {
-                    service: selectedService,
-                    option: selectedOption,
-                  },
-                });
-              }}
-            >
+    <>
+      <div className="form-hero gap-3 d-flex flex-column container-fluid m-5 py-5 w-100">
+        <div className="text-start gap-2 d-flex flex-column w-100">
+          <h1 className="text-start">
+            Welcome To <span className="form-hero-span">Service-Linker</span>
+          </h1>
+          <p className="text-start">
+            Connecting you with qualified professionals for quick assistance.
+          </p>
+        </div>
+        <div className="gap-2 d-flex flex-column w-100">
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              navigate("/professionals", {
+                state: {
+                  service: selectedService,
+                  option: selectedOption,
+                },
+              });
+            }}
+            className="d-flex flex-column gap-3 w-50"
+          >
+            <div className="gap-3 d-flex w-100 justify-content-center align-items-center">
               <select
                 name="domains"
                 id="domain-select"
                 value={selectedService}
                 onChange={(e) => {
                   setSelectedService(e.target.value);
+                }}
+                className="form-hero-option-one form-select w-100 p-2 text-center"
+                style={{
+                  width: "100%",
+                  height: "50px",
+                  borderRadius: "5px",
+                  padding: "10px",
                 }}
               >
                 <option value="">--Please select the repair domain--</option>
@@ -91,6 +103,13 @@ function HomePage() {
                 onChange={(e) => {
                   setSelectedOption(e.target.value);
                 }}
+                className="form-hero-option-two form-select w-100 p-2 text-center"
+                style={{
+                  width: "100%",
+                  height: "50px",
+                  borderRadius: "5px",
+                  padding: "10px",
+                }}
               >
                 <option value="">--select the service type--</option>
                 <option value="Masonary ">block and stone repair</option>
@@ -103,112 +122,147 @@ function HomePage() {
                   repairs of electronic device, TV fixing, computer
                 </option>
               </select>
-              <br />
-              <input type="submit" value="FIND A PROFESSIONAL" />
-            </form>
-          </div>
-          <div className="gears-container">
-            <div className="custom-div-1">
-              <div className="custom-div-2">
-                <img
-                  src={assets.BerkeleyGear}
-                  width="200px"
-                  className="honolulu-gear d-none d-lg-block"
-                />
-              </div>
             </div>
-            <img
-              src={assets.OrangeGear}
-              width="300px"
-              className="yale-gear d-none d-lg-block"
-            />
-          </div>
+            <div className="d-flex">
+              <input
+                type="submit"
+                value="FIND A PROFESSIONAL"
+                className="btn-login"
+              />
+            </div>
+          </form>
         </div>
-      </header>
+      </div>
 
-      <div className="first-horizontal-div"></div>
+      <div className="container-fluid mb-5 d-flex flex-column">
+        <div className="gears-container">
+          <div className="custom-div-1">
+            <div className="custom-div-2">
+              <img
+                src={assets.BerkeleyGear}
+                width="200px"
+                className="honolulu-gear d-none d-lg-block"
+              />
+            </div>
+          </div>
+          <img
+            src={assets.OrangeGear}
+            width="300px"
+            className="yale-gear d-none d-lg-block"
+          />
+        </div>
+      </div>
 
-      <main>
-        <section className="category-section">
+      <div className="two-divs container-fluid d-flex justify-content-between w-100 mt-5 mb-5 py-5">
+        <div className="first-horizontal-div w-100"></div>
+        <div className="second-horizontal-div w-100"></div>
+      </div>
+      <div className="container-fluid ">
+        <section className="category-section container-fluid mb-5 d-flex flex-column">
           <h1>Our available domains</h1>
           <p>know more about what we offer for each domains</p>
           <div className="horizontal-images home-card-container">
             {serviceElements}
           </div>
         </section>
+      </div>
 
-        <div className="second-horizontal-div"></div>
-
-        <section className="reusable-btn-section">
-          <h1>Want to see Professionals profiles?</h1>
-          <p>click any domain service</p>
-          <div style={style}>{reusableButtonElements}</div>
-        </section>
-
-        <div className="third-horizontal-div"></div>
-
-        <section className="how-it-works-section">
-          <h1>How it works</h1>
-          <div className="inner-section">
-            <div>
-              <ol>
-                <li>Post Your Repair Need</li>
-                <div>
-                  <FontAwesomeIcon icon={faList} />
-                  <p>Describe your issue in detail.</p>
-                </div>
-                <li>Connect with a Professional</li>
-                <div>
-                  <FontAwesomeIcon icon={faWifi} />
-                  <p>Receive bids and choose the best pro.</p>
-                </div>
-                <li>Get it Fixed</li>
-                <div>
-                  <FontAwesomeIcon icon={faScrewdriverWrench} />
-                  <p>Schedule and complete your repair.</p>
-                </div>
-                <li>Be satisfied</li>
-                <div>
-                  <FontAwesomeIcon icon={faHandshakeAngle} />
-                  <p>Have a great day!</p>
-                </div>
-              </ol>
-              <Link to="/how-it-works">
-                <button>LEARN MORE</button>
-              </Link>
-            </div>
-            <img src={assets.Step} alt="" />
+      <div className="second-horizontal-div"></div>
+      <div className="container-fluid d-flex flex-column">
+        <section className="reusable-btn-section container-fluid mb-5 d-flex flex-column">
+          <div className="text-start">
+            <h1>Want to see Professionals profiles?</h1>
+            <p>click any domain service</p>
+          </div>
+          <div className="">
+            <Link to="/professionals" className="text-decoration-none">
+              <div style={style}>{reusableButtonElements}</div>
+            </Link>
           </div>
         </section>
+      </div>
 
-        <div className="fourth-horizontal-div"></div>
+      <div className="third-horizontal-div"></div>
 
-        <section className="get-started-section">
+      <div className="container-fluid d-flex justify-content-between w-100 mb-5 py-5">
+        <div className="d-flex align-items-center justify-content-between flex-row w-100">
+          <div className="text-start d-flex flex-column p-5">
+            <h1 className="text-start mb-5">How it works</h1>
+            <ol className="text-start d-flex flex-column gap-3">
+              <li>Post Your Repair Need</li>
+              <div>
+                <p className="gap-3 d-flex justify-content-start align-items-center">
+                  <FontAwesomeIcon icon={faList} size="2x" />
+                  Describe your issue in detail.
+                </p>
+              </div>
+              <li>Connect with a Professional</li>
+              <div>
+                <p className="gap-3 d-flex justify-content-start align-items-center">
+                  <FontAwesomeIcon icon={faWifi} size="2x" />
+                  Receive bids and choose the best pro.
+                </p>
+              </div>
+              <li>Get it Fixed</li>
+              <div>
+                <p className="gap-3 d-flex justify-content-start align-items-center">
+                  <FontAwesomeIcon icon={faScrewdriverWrench} size="2x" />
+                  Schedule and complete your repair.
+                </p>
+              </div>
+              <li>Be satisfied</li>
+              <div>
+                <p className="gap-3 d-flex justify-content-start align-items-center">
+                  <FontAwesomeIcon icon={faHandshakeAngle} size="2x" />
+                  Have a great day!
+                </p>
+              </div>
+            </ol>
+            <Link to="/how-it-works">
+              <button className="btn btn-login">LEARN MORE</button>
+            </Link>
+          </div>
+          <div
+            className="float-end"
+            style={{ float: "right", textAlign: "right" }}
+          >
+            <img
+              src={assets.Step}
+              alt=""
+              className="img-fluid float-end d-none d-lg-block"
+              width="400px"
+              height="400px"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="fourth-horizontal-div"></div>
+
+      <main className="container-fluid d-flex flex-column justify-content-between">
+        <section className="p-5 d-flex flex-column mb-5">
           <h1>Ready to get started?</h1>
           <p>Join thousands of satisfied customers today</p>
           <Link to="/auth/signin">
-            <button>JOIN</button>
+            <button className="btn btn-join">JOIN</button>
           </Link>
         </section>
 
         <div className="fifth-horizontal-div"></div>
 
-        <section className="reasons-section">
-          <h1>Why using our platform?</h1>
-          <p>
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXX.
-          </p>
-          <Link to="/how-it-works">
-            <button>Learn More</button>
+        <section className="container-fluid d-flex flex-column justify-content-between mb-5 p-5">
+          <h1 className="text-start">Why using our platform?</h1>
+          <p className="text-start">BBBBBBBBBBBBBBBBB</p>
+          <Link to="/benefits">
+            <button className="btn btn-login">Learn More</button>
           </Link>
         </section>
       </main>
 
-      <div className="sixtth-horizontal-div"></div>
+      <div className="sixtth-horizontal-div container-fluid"></div>
 
       <Footer />
-    </div>
+    </>
   );
 }
 export default HomePage;

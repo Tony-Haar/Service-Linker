@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faLocation } from "@fortawesome/free-solid-svg-icons";
 import { assets } from "../../assets/assets";
-import Logo from "../../assets/Logo.png";
 
 import "./aboutUsPage.css";
 import Navbar from "../../components/Navbar";
@@ -26,7 +25,6 @@ function AboutUsPage() {
 
   return (
     <div className="main-container">
-      <Navbar />
       <div className="about-us-hero">
         <div className="about-us-header">
           <h1 className="about-us-description">Meet Our Team</h1>
@@ -42,7 +40,7 @@ function AboutUsPage() {
             <button>Get In Touch</button>
           </a>
         </div>
-        <div className="user-cards">
+        <div className="user-cards container-fluid d-flex justify-content-center align-items-center flex-wrap">
           {userCard.map((user, index) => (
             <div key={index} className="user-card">
               <img src={user.image} alt={user.name} className="user-image" />
@@ -53,7 +51,7 @@ function AboutUsPage() {
         </div>
       </div>
 
-      <div className="about-us-contact-center">
+      <div className="about-us-contact-center container-fluid mt-5 mb-5 py-5 px-5">
         <div className="about-us-form-container">
           <h1 className="about-us-form-header">Get In Touch</h1>
           <p className="about-us-query">
@@ -99,8 +97,11 @@ function AboutUsPage() {
           <div className="about-us-call-us">
             <h1>Call Us</h1>
             <p>Call our team from Mon-Fri 8AM to 5PM</p>
-            <FontAwesomeIcon icon={faPhone} />
-            <h3>+919000009044</h3>
+
+            <h3>
+              <FontAwesomeIcon icon={faPhone} />
+              +919000009044
+            </h3>
           </div>
           <div className="about-us-chat-with-us">
             <h1>Chat With Us</h1>

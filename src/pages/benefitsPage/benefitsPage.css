@@ -4,9 +4,6 @@
     padding: 60px;
 }
 
-
-/*-------------------MAIN */
-
 .benefits-page-container main section {
     padding: 60px;
 }
@@ -33,7 +30,6 @@
     font-weight: bold;
 }
 
-/*------warranty-section */
 
 .li-one {
     position: relative;
@@ -66,7 +62,6 @@
     float: right;
 }
 
-/* --------good deal with us section */
 
 .li-two {
     position: relative;
@@ -100,7 +95,6 @@
     color: var(--honolulu-blue);
 }
 
-/*---------get started section */
 
 ._get-started-section_ button {
     margin-top: 30px;

@@ -1,8 +1,6 @@
 @import "../../colors.css";
 
 
-/* MAIN STYLING */
-
 .professional-profile-page-container main h1 {
   padding: 60px 60px 30px 60px;
 }
@@ -10,16 +8,11 @@
 .professional-profile-page-container .main-inner-container {
   display: grid;
   grid-template-columns: 1.2fr .8fr;
-  /* justify-content: space-between;
-  align-items: flex-start;
-  width: 100%; */
   gap: 40px;
-  /* padding: 20px; */
   padding: 60px;
   padding-top: 0px;
 }
 
-/* main-inner-container professional-details-container styling */
 
 .professional-profile-page-container .professional-details-inner-container {
   display: flex;
@@ -69,7 +62,6 @@
   font-size: 12px;
 }
 
-/* main-inner-container messages-container styling */
 
 .professional-profile-page-container main .messages-container {
   height: 400px;
@@ -149,7 +141,6 @@
   cursor: pointer;
 }
 
-/* main-inner-container review section styling */
 
 .professional-profile-page-container .review-section {
   margin-top: 20px;
@@ -161,9 +152,6 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
-  /* gap: 10px; */
-  /* padding: 20px; */
-  /* font-weight: normal; */
 }
 
 .review-section .review-card {
@@ -213,8 +201,6 @@
   padding-left: 60px;
 }
 
-/* main-inner-container portfolio section styling */
-
 .professional-profile-page-container .portfolio-section {
   padding-top: 20px;
 }
@@ -222,11 +208,7 @@
 .professional-profile-page-container .portfolio-section h3 {
   padding-bottom: 20px;
 }
-/* .portfolio-page-container {
-  display: block;
-  flex-direction: column;
-  padding: 20px;
-} */
+
 .portfolio-section .portfolio-images-container {
   display: flex;
   justify-content: space-between;

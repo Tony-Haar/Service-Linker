@@ -11,6 +11,7 @@ import { serviceData } from "../../assets/assets";
 import "./landingPage.css";
 import WhyChooseUs from "../../components/WhyChooseUs";
 
+
 function LandingPage({ isLoggedIn, username }) {
   const navigate = useNavigate();
   const [request, setRequest] = useState("");
@@ -151,9 +152,9 @@ function LandingPage({ isLoggedIn, username }) {
         </div>
       )}
 
-      <div className="partners-container container-fluid mt-5 mb-5 py-5">
+      {/* <div className="partners-container container-fluid mt-5 mb-5 py-5">
         <h2 className="text-center mb-4">Partners</h2>
-      </div>
+      </div> */}
 
       <main className="landing-page-main-container container-fluid mt-5 mb-5 d-flex flex-column">
         <div className="services-display-container container-fluid">
@@ -163,8 +164,6 @@ function LandingPage({ isLoggedIn, username }) {
             <div className="row justify-content-center">{serviceElements}</div>
           </div>
         </div>
-
-        {/* .................OFFERS SECTION.................. */}
 
         <div className="container-fluid offer-section">
           <div className="tex-start offer-label-container">
@@ -224,14 +223,12 @@ function LandingPage({ isLoggedIn, username }) {
           </section>
         </div>
 
-        {/* ................................... */}
-
-        <div className="testimonies-container">
+        {/* <div className="testimonies-container">
           <h1 className="text-start mx-5">Testimonies</h1>
           <div className="line"></div>
-        </div>
+        </div> */}
       </main>
-      <div className="reasons-container container-fluid">
+      {/* <div className="reasons-container container-fluid">
         <h1 className="mx-5">Why using our platform?</h1>
         <div className="line"></div>
         <WhyChooseUs
@@ -246,7 +243,7 @@ function LandingPage({ isLoggedIn, username }) {
         <Link to="/benefits">
           <button>Learn More</button>
         </Link>
-      </div>
+      </div> */}
 
       <Footer />
     </>

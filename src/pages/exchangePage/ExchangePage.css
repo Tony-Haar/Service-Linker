@@ -1,0 +1,21 @@
+.main-message {
+  background-color: var(--berkeley-blue);
+  color: var(--white);
+  padding: 10px;
+}
+.message-input {
+  border: 2px solid var(--orange-web);
+}
+
+.message-unread {
+  color: var(--orange-web);
+}
+
+.message-indicators {
+  color: var(--berkeley-blue);
+}
+
+.confirmation-box {
+      border-bottom: var(--orange-web) 2px solid;
+    border-top: var(--berkeley-blue) 2px solid;
+}

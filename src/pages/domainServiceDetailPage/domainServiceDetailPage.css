@@ -15,7 +15,6 @@
     padding: 60px;
 }
 
-/* -----domain service detail card */
 
 .domain-service-displaying-container {
     display: grid;
@@ -46,8 +45,6 @@
     padding-left: 20px;
 }
 
-
-
 .service-detail-container ._get-started-section_ {
     display: block;
     padding-top: 60px;
@@ -74,10 +71,6 @@
     color: var(--honolulu-blue);
     border-color: var(--honolulu-blue);
 }
-
-/* .service-detail-container .third-horizontal-div {
-    margin-top: 60px;
-} */
 
 .service-detail-container main hr {
     height: 10px;

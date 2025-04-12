@@ -16,8 +16,6 @@ import Footer from "../../components/Footer";
 function ProfessionalProfilePage({ isLoggedIn, username }) {
   const navigate = useNavigate();
   const location = useLocation();
-  // Update the following line:
-  //   const { name = "", email = "", experience = "", service = "", image = Profile, about = "", contact = "", expertise = [] } = position;
   const {
     name = "",
     email = "",
@@ -32,7 +30,6 @@ function ProfessionalProfilePage({ isLoggedIn, username }) {
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState("");
 
-  //Added index to the map function to avoid the following error:
   const expertiseElement = expertise.map((skill, index) => (
     <p className="expertise" key={index}>
       {skill}
@@ -84,11 +81,9 @@ function ProfessionalProfilePage({ isLoggedIn, username }) {
         <div className="main-inner-container">
           <div className="professional-details-container">
             <section className="professional-details-inner-container">
-              {/* <img src={image} alt="professional image" /> */}
               {(image || Profile) && (
                 <img src={image || Profile} alt="professional image" />
               )}
-              {/* Updaated this */}
               <div className="professional-info">
                 <h5 style={{ marginBottom: "0", paddingBottom: "0" }}>
                   {name}

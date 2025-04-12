@@ -26,20 +26,17 @@ function AuthPage({ setIsLoggedIn, setUsername_ }) {
   const handleSignUp = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Check if the username already exists
     const userExists = users.some((user) => user.username === username);
     if (userExists) {
       setError("Username already taken!");
       return;
     }
 
-    // Check if passwords match
     if (password !== rePassword) {
       setError("Passwords do not match!");
       return;
     }
 
-    // Add new user to the users array
     const userType = "needer";
     const newUser = { username, password, userType };
     users.push(newUser);
@@ -47,20 +44,18 @@ function AuthPage({ setIsLoggedIn, setUsername_ }) {
 
     setError("");
     alert("User created successfully!");
-    navigate("/auth/signin"); // Redirect to sign-in page
+    navigate("/auth/signin");
   };
 
   const handleLogin = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Find user by username
     const user = users.find((user) => user.username === username);
     if (!user) {
       setError("User not found!");
       return;
     }
 
-    // Check if password matches
     if (user.password !== password) {
       setError("Incorrect password!");
       return;
@@ -76,7 +71,7 @@ function AuthPage({ setIsLoggedIn, setUsername_ }) {
     setIsLoggedIn(true);
     setUsername_(username);
     localStorage.setItem("loggedInUser", JSON.stringify(userData));
-    navigate("/home"); // Redirect to home page after successful login
+    navigate("/home");
   };
 
   const footerStyle = {
@@ -107,12 +102,8 @@ function AuthPage({ setIsLoggedIn, setUsername_ }) {
 
   return (
     <>
-      {/* <div className="vh-100 bg-secondary d-flex justify-content-center align-items-center">
-        <div className="auth-container bg-light w-50 p-4 rounded shadow w-100"> */}
       <div className="container-fluid d-flex flex-column align-items-center justify-content-center bg-secondary">
         <div className="row justify-content-center w-100 mb-5 container mx-auto mt-5 d-flex flex-column align-items-center">
-          {/* <div className="row align-items-center w-100">
-            <div className="col"> */}
           <div className="col-md-8">
             <div className="card">
               <div className="d-flex container justify-content-between align-items-center my-3 w-100">

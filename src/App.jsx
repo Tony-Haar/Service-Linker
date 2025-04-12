@@ -16,7 +16,6 @@ import RegistrationForm from "./pages/registrationForm/RegistrationForm";
 import OrderProfessional from "./pages/OrderProfessional/OrderProfessional";
 import ServicesPage from "./pages/servicePage/ServicesPage";
 import Professionals from "./pages/Professionals/Professionals";
-import ProInformation from "./components/ProInformation";
 import RequestPage from "./pages/requestsPage/requestsPage";
 import ExchangePage from "./pages/exchangePage/ExchangePage";
 import PartnersPage from "./pages/partnersPage/PartnersPage";
@@ -88,7 +87,6 @@ function AppContent() {
 
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/registration-form" element={<RegistrationForm />} />
-        <Route path="/pro-information" element={<ProInformation />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route
           path="/professionals"

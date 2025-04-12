@@ -3,13 +3,11 @@
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
   font-family: "Poppins", "sans-serif";
 }
 
 html {
   display: flex;
-  /* flex-direction: column; */
 }
 
 body {
@@ -164,7 +162,6 @@ body {
 }
 
 
-/* GET IN TOUCH SECTION */
 .about-us-contact-center {
   display: flex;
   justify-content: space-around;

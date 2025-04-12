@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "../pages/landingPage/landingPage.css";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-link-item-container d-flex flex-wrap justify-content-center align-items-center py-5 px-5">
@@ -24,8 +26,9 @@ const Footer = () => {
         </a>
       </div>
 
-      <h3 className="text-center py-4">
-        &copy; <span>FIXit</span>, ALL RIGHTS RESERVED
+      <h3 className="text-center py-4 gap-2">
+        &copy;
+        <span>Service-Linker,</span> {currentYear} All Rights Reserved
       </h3>
     </footer>
   );

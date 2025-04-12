@@ -14,9 +14,7 @@ import Footer from "../../components/Footer";
 export default function HIWPage() {
   return (
     <div className="how-it-works-container">
-      <header>
-        {/* <Navbar /> */}
-      </header>
+      <header></header>
 
       <main>
         <h1 className="text-start mb-5">

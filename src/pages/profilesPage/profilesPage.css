@@ -19,8 +19,6 @@ body {
   height: 100vh;
 }
 
-/* ----------HEADER */
-
 .profiles-page-container .header-reusable-button-div {
   padding: 20px 30px 0px 30px
 }
@@ -28,10 +26,6 @@ body {
 .profiles-page-container section {
     padding: 30px 60px;
 }
-
-
-/* ----------MAIN */
-/* ---section-01 */
 
 .sort-dropdown {
     padding: 30px 0;
@@ -41,7 +35,6 @@ body {
     gap: 100px;
 }
 
-/* -----profile card */
 
 .profile-displaying-container {
   display: grid;
@@ -113,7 +106,6 @@ body {
   gap: 20px;
 }
 
-/* --------section 02 */
 
 .service-related-images-section h2 {
   padding-bottom: 30px;

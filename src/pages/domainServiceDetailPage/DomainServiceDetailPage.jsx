@@ -23,10 +23,6 @@ export default function DomainServiceDetailPage() {
 
   return (
     <div className="service-detail-container">
-      <header>
-        {/* <Navbar /> */}
-      </header>
-
       <main>
         <h1>{domain}</h1>
         <h4 className="subtitle">

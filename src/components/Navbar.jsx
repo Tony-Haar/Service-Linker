@@ -3,10 +3,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Logo from "../assets/Logo.png";
+import { assets } from "../assets/assets";
 
-
-
-export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }) {
+export default function Navbar({
+  isLoggedIn,
+  setIsLoggedIn,
+  username,
+  userType,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -14,17 +18,17 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false); // Update login state
+    setIsLoggedIn(false);
     localStorage.removeItem("loggedInUser");
     alert("Logged out successfully!");
   };
 
   return (
     <>
-      <nav className="navbar container-fluid navbar-expand-lg">
+      <nav className="aboja navbar container-fluid navbar-expand-lg">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <img src={Logo} alt="Fix-It-Logo" className="Logo" />
+            <img src={assets.Logo} alt="Fix-It-Logo" className="Logo" />
           </Link>
           {isLoggedIn && <p>{username}</p>}
           <button
@@ -50,7 +54,8 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
                   Messages
                 </Link>
               </li>
-              {userType === "provider" && isLoggedIn && (
+
+              {/* {userType === "provider" && isLoggedIn && (
                 <li className="nav-item">
                   <Link
                     to="/requests"
@@ -59,7 +64,8 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, username, userType }
                     Requests
                   </Link>
                 </li>
-              )}
+              )} */}
+
               <li className="nav-item">
                 <Link
                   to="/services"

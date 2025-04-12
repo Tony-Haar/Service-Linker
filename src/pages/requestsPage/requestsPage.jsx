@@ -8,11 +8,6 @@ import Footer from "../../components/Footer";
 
 
 const RequestPage = () => {
-  /* const location = useLocation();
-  const { domain, service } = location.state || {}; 
-  
-  const [selectedService, setSelectedService] = useState(domain || "carpentry"); */
-
   return (
     <>
       <Container className="mt-5 mb-5">
